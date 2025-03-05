@@ -1,0 +1,29 @@
+.shop-name{
+    font-family: "Gill Sans", sans-serif;
+    letter-spacing: 0.15em;
+}
+
+nav{
+    letter-spacing: 0.1em;
+}
+
+nav li{
+    margin-right: 10px;
+}
+
+h2{
+    text-align: center;
+}
+
+figure{
+    text-align: center;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+p{
+    color: green;
+}
