@@ -13,14 +13,25 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./resurse/imagini/ico/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Coffee Shop" />
     <link rel="manifest" href="./resurse/imagini/ico/site.webmanifest" />
-    <link rel="stylesheet" href="resurse/css/pages/index.css">
+<!--    <link rel="stylesheet" href="resurse/css/pages/index.css">-->
+    <link rel="stylesheet" href="./resurse/css/general.css">
+    <link rel="stylesheet" href="./resurse/css/navbars/nav.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&family=Poiret+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Passion+One:wght@400;700;900&family=Poiret+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
     <title>SleepLess Brews</title>
 </head>
 <body>
     <header>
         <h1 class="shop-name"><i lang="en">SleepLess Brews</i></h1>
         <nav>
-            <ul>
+            <ul class="nav-bar">
                 <li>
                     <a href="#acasa">Acasă</a>
                     <ul>
@@ -42,7 +53,7 @@
                 </li>
 
                 <li>
-                    <a href="#servicii-clienti">SERVICII CLIENTI</a>
+                    <a href="#servicii-clienti">Servicii Clienți</a>
                     <ul>
                         <li><a href="#contact">Contact</a></li>
                         <li><a href="#faq">FAQ</a></li>
@@ -52,84 +63,90 @@
         </nav>
     </header>
     <main>
-        <section id="acasa">
-            <h2>Acasă</h2>
-            <section id="intro">
-                <h3>SleepLess Brews</h3>
-                <figure>
-                    <picture>
-                        <source srcset="./resurse/imagini/coffee-home-page-small.jpg"
-                                media="(max-width:700px)">
-                        <source srcset="./resurse/imagini/coffee-home-page-medium.jpg"
-                                media="(max-width:1200px)">
-                        <img src="./resurse/imagini/coffee-home-page-large.jpg" alt="coffee-home-page">
-                    </picture>
-                    <figcaption>Noi îți dăm energia de care ai nevoie să te bucuri de viață!</figcaption>
-                </figure>
-                <a href="./resurse/imagini/coffee-home-page-large.jpg" download="photo.png">Click to download photo.</a>
-                <br>
-                <q>Atâta timp cât există cafea în lume, cât de rău ar putea fi lucrurile?</q>
-                <em> - Cassandra Clare</em>
-                <br>
-                <p>Pentru pasionații de <b>cafea</b>: <a href="https://www.coffeegeek.com/"><i lang="en">Coffee Geek</i></a></p>
-                <ul>
-                    <li><a href="#istoric">Istoric</a></li>
-                    <li><a href="#cafea">Produse</a></li>
-                    <li><a href="#ghiduri">Ghiduri</a></li>
-                    <li><a href="#servicii-clienti">Servicii</a></li>
-                </ul>
-            </section>
-            <br>
-            <section id="istoric">
-                <h4>De unde a pornit totul?</h4>
-                <h3>Povestea <strong><i lang="en">SleepLess Brews</i></strong></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aspernatur assumenda, consectetur cumque laudantium necessitatibus omnis provident tempora! A asperiores eius ipsam iste necessitatibus nostrum numquam quod ut vel veniam.</p>
-            </section>
-        </section>
-        <section id="cafea">
-            <h2>Produsele noastre</h2>
-            <p>La SleepLess Brews, ne mândrim cu selecția noastră premium de <b>cafea</b>, provenită din cele mai bune <b>culturi de cafea</b> din întreaga lume.
-                Deși nu am lansat complet colecția noastră, te invităm să descoperi în curând o gamă variată de produse, inclusiv <b>boabe de cafea</b>, cafea măcinată,
-                băuturi pe bază de cafea și accesorii esențiale pentru <b>iubitorii de cafea</b>.</p>
-            <strong>Ce urmează ?</strong>
-            <ul>
-                <li><b>Cafea de specialitate</b> - Boabe de cafea provenite din regiunile celebre ale lumii.</li>
-                <li><b>Băuturi personalizate</b> - Espresso, cappuccino, latte și multe altele.</li>
-                <li><b>Accesorii pentru cafea</b> - Măcinătoare, filtre, căni și aparate de preparare.</li>
-                <li><b>Cadouri pentru iubitorii de cafea</b> - Pachete speciale pentru cei dragi.</li>
-            </ul>
-            <p>În contextul site-ului nostru apreciem fidelitatea clienților, astfel la fiecare comandă prețul final din coș va avea următoarea formulă:</p>
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <mrow>
-                    <mi>pret_final</mi>
-                    <mo>=</mo>
-                    <mi>pret_initial</mi>
-                    <mo>-</mo>
-                    <mfrac>
-                        <mi>numar_comenzi_luna_anterioara</mi>
-                        <mn>100</mn>
-                    </mfrac>
-                    <mo>&#215;</mo>
-                    <mi>pret_initial</mi>
-                </mrow>
-            </math>
-        </section>
-        <section id="ghiduri">
-            <h2>Ghiduri</h2>
-            <em>Bine ai venit în secțiunea noastră de ghiduri, unde îți oferim tot ce ai nevoie pentru a deveni expert în cafea! Fie că ești începător sau un pasionat al cafelei, aici vei găsi informații utile despre tipurile de cafea, metodele de preparare și sfaturi pentru a obține cea mai bună experiență de cafea.</em>
-            <section id="tipuri-de-cafele">
-                <h3>Tipuri de cafele</h3>
-                <div id="coffee-map">
-                    <img src="./resurse/imagini/coffees.jpg"
-                         alt="coffees"
-                         usemap="#coffee-regions">
-                    <map name="coffee-regions">
-                        <area shape="rect" coords="0,0,312,278" href="https://www.youtube.com/watch?v=F4wrUP4c5P4&ab_channel=JamesHoffmann" target="_blank" alt="espresso-zone">
-                        <area shape="rect" coords="0,278,312,557" href="https://www.youtube.com/watch?v=XQ3TcpI2Lu8&ab_channel=JamesHoffmann" target="_blank" alt="americano-zone">
-                        <area shape="rect" coords="312,0,625,278" href="https://www.youtube.com/watch?v=PgGJ58Qe-m8&ab_channel=ArtistiCoffeeRoasters." target="_blank" alt="cappuccino-zone">
-                        <area shape="rect" coords="312,278,625,557" href="https://www.youtube.com/watch?v=n-Ue4QJz3Mc&ab_channel=ArtistiCoffeeRoasters." target="_blank" alt="latte-zone">
-                    </map>
+        <div class="grid-pagina">
+            <div class="section-1">
+                <section id="acasa">
+                    <div class="home-title">
+                        <h2>Acasă</h2>
+                    </div>
+                    <section id="intro">
+                        <div class="banner">
+                            <h3>SleepLess Brews</h3>
+                            <figure>
+                                <picture>
+                                    <source srcset="./resurse/imagini/coffee-home-page-small.jpg"
+                                            media="(max-width:700px)">
+                                    <source srcset="./resurse/imagini/coffee-home-page-medium.jpg"
+                                            media="(max-width:1200px)">
+                                    <img src="./resurse/imagini/coffee-home-page-large.jpg" alt="coffee-home-page">
+                                </picture>
+                                <figcaption>Noi îți dăm energia de care ai nevoie să te bucuri de viață!</figcaption>
+                            </figure>
+                        </div>
+                        <q>Atâta timp cât există cafea în lume, cât de rău ar putea fi lucrurile?</q>
+                        <em> - Cassandra Clare</em>
+                        <br>
+                        <div class="download-banner-button">
+                            <a href="./resurse/imagini/coffee-home-page-large.jpg" download="photo.png" class="download-banner">
+                                <i class="fa-solid fa-download"></i>
+                            </a>
+                        </div>
+                    </section>
+                </section>
+            </div>
+            <div class="section-8">
+                <div class="coffee-geek">
+                    <p>Pentru pasionații de <b>cafea</b>: <a href="https://www.coffeegeek.com/" target="_blank"><i lang="en">Coffee Geek</i></a></p>
                 </div>
+                <div class="nav-bar-section-8">
+                    <ul>
+                        <li><a href="#istoric">Istoric</a></li>
+                        <li><a href="#cafea">Produse</a></li>
+                        <li><a href="#ghiduri">Ghiduri</a></li>
+                        <li><a href="#servicii-clienti">Servicii</a></li>
+                    </ul>
+                </div>
+                <section id="istoric">
+                    <div class="inceputul-magazinului">
+                        <h4>De unde a pornit totul?</h4>
+                    </div>
+                    <h3>Povestea <strong><i lang="en">SleepLess Brews</i></strong></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aspernatur assumenda, consectetur cumque laudantium necessitatibus omnis provident tempora! A asperiores eius ipsam iste necessitatibus nostrum numquam quod ut vel veniam.</p>
+                </section>
+                <section id="cafea">
+                    <h3>Produsele noastre</h3>
+                    <p>La SleepLess Brews, ne mândrim cu selecția noastră premium de <b>cafea</b>, provenită din cele mai bune <b>culturi de cafea</b> din întreaga lume.
+                        Deși nu am lansat complet colecția noastră, te invităm să descoperi în curând o gamă variată de produse, inclusiv <b>boabe de cafea</b>, cafea măcinată,
+                        băuturi pe bază de cafea și accesorii esențiale pentru <b>iubitorii de cafea</b>.</p>
+                </section>
+            </div>
+            <div class="section-3">
+                <div class="ce-urmeaza">
+                    <strong>Ce urmează ?</strong>
+                </div>
+                <ul>
+                    <li><b>Cafea de specialitate</b> - Boabe de cafea provenite din regiunile celebre ale lumii.</li>
+                    <li><b>Băuturi personalizate</b> - Espresso, cappuccino, latte și multe altele.</li>
+                    <li><b>Accesorii pentru cafea</b> - Măcinătoare, filtre, căni și aparate de preparare.</li>
+                    <li><b>Cadouri pentru iubitorii de cafea</b> - Pachete speciale pentru cei dragi.</li>
+                </ul>
+                <p>În contextul site-ului nostru apreciem fidelitatea clienților, astfel la fiecare comandă prețul final din coș va avea următoarea formulă:</p>
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi class="pret-final">pret_final</mi>
+                        <mo>=</mo>
+                        <mi class="pret-initial">pret_initial</mi>
+                        <mo>-</mo>
+                        <mfrac class="fraction">
+                            <mi>numar_comenzi_luna_anterioara</mi>
+                            <mn>100</mn>
+                        </mfrac>
+                        <mo>&#215;</mo>
+                        <mi class="pret-initial">pret_initial</mi>
+                    </mrow>
+                </math>
+            </div>
+            <div class="section-4">
                 <div id="grid-cafele">
                     <section id="espresso">
                         <b>Espresso</b>
@@ -160,119 +177,215 @@
                         <p>Se obține prin diluarea unui <b>espresso</b> cu <b>apă fierbinte</b>. Este o <b>băutură</b> mai ușoară, cu un <b>gust</b> mai puțin <b>intens</b>, ideală pentru cei care nu vor o <b>cafea</b> prea <b>concentrată</b>.</p>
                     </section>
                 </div>
-            </section>
-            <section id="tipuri-de-preparare">
-                <h3>Tipuri de preparare</h3>
-                <ul>
-                    <li>
-                        <b>Cafetiera cu filtru</b>
-                        <p>Aceasta este una dintre cele mai populare metode de preparare. Cafeaua este preparată prin trecerea apei fierbinți peste cafeaua măcinată, care se filtrează într-un recipient. Este ideală pentru cei care preferă o cafea mai blândă.</p>
-                    </li>
-                    <li>
-                        <b>Aeropress</b>
-                        <p>Aeropress-ul este o metodă rapidă de preparare a cafelei, care combină presiunea și filtrarea pentru a obține o cafea foarte concentrată și aromatică. Este preferată de iubitorii de cafea care doresc să experimenteze diverse arome.</p>
-                    </li>
-                    <li>
-                        <b>French Press</b>
-                        <p>Metoda french press presupune infuzarea cafelei într-un recipient cu apă fierbinte, urmată de presarea cafelei printr-un filtru metalic. Această metodă oferă o cafea mai densă și mai robustă.</p>
-                    </li>
-                    <li>
-                        <b>Pour-over</b>
-                        <p>Această metodă implică turnarea lentă a apei fierbinți peste cafeaua măcinată, oferind o extracție uniformă a aromei. Este o metodă manuală care necesită puțină practică, dar rezultatele sunt uimitoare.</p>
-                    </li>
-                </ul>
-            </section>
-            <section id="sfaturi">
-                <h3>Sfaturi pentru o <b>cafea perfecta</b></h3>
-                <ul>
-                    <li>Folosirea apei de calitate: Apa reprezintă aproximativ 98% din cafeaua ta, așa că asigură-te că folosești apă curată și filtrată.</li>
-                    <li>Proaspăt măcinată: Cafeaua ar trebui măcinată chiar înainte de preparare, pentru a-și păstra aroma și prospețimea</li>
-                    <li>Temperatura apei: Apa prea fierbinte poate face cafeaua amară. Ideal este ca temperatura apei să fie între 90-96°C</li>
-                    <li>Raportul cafea-apă: Pentru o cafea echilibrată, respectă raportul ideal de 1:15 (un gram de cafea pentru 15 ml de apă)</li>
-                </ul>
-            </section>
-            <section id="tutoriale">
-                <h3>Materiale de ajutor</h3>
-                <ul>
-                    <li>
-                        <a href="https://www.youtube.com/embed/ftzwByCgNUY" target="VideoFrame">Primul tutorial</a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/embed/vFcS080VYQ0" target="VideoFrame">Al doilea tutorial</a>
-                    </li>
-                </ul>
-                <iframe name="VideoFrame"
-                        width="400"
-                        height="250"
-                        src="https://www.youtube.com/embed/ftzwByCgNUY"
-                        allowfullscreen>
-                </iframe>
-                <br>
-                <embed src="./resurse/best-coffee-practices.pdf"
-                       type="application/pdf"
-                       width="400"
-                       height="250">
-            </section>
-        </section>
-        <section id="servicii-clienti">
-            <h2>Servicii Clienți</h2>
-            <em>La SleepLess Brews, suntem dedicați să oferim o experiență perfectă pentru fiecare client. Dacă ai întrebări sau ai nevoie de asistență, echipa noastră de suport este aici să te ajute!</em>
-            <section id="contact">
-                <h3>Contactează-ne</h3>
-                <address>
-                    <p>Telefon: <a href="tel:+40123456789">+40 123 456 789</a></p>
-                    <p>Adresa: <a href="https://maps.app.goo.gl/9UWMhPbGFJKMs2J7A">Facultatea de Matematica si Informatica</a></p>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d225.90127774207969!2d26.09937303849227!3d44.43565464279609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff472f47f047%3A0x493984726f0235f9!2sFacultatea%20de%20Matematic%C4%83%20%C8%99i%20Informatic%C4%83!5e1!3m2!1sro!2sro!4v1741171385273!5m2!1sro!2sro"
-                            width="400"
-                            height="250"
-                            style="border:0;"
-                            allowfullscreen=""
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
+            </div>
+            <div class="section-2">
+                <section id="ghiduri">
+                    <div class="ghiduri-title">
+                        <h2>Ghiduri</h2>
+                    </div>
+                    <em>Bine ai venit în secțiunea noastră de ghiduri, unde îți oferim tot ce ai nevoie pentru a deveni expert în cafea! Fie că ești începător sau un pasionat al cafelei, aici vei găsi informații utile despre tipurile de cafea, metodele de preparare și sfaturi pentru a obține cea mai bună experiență de cafea.</em>
+                    <section id="tipuri-de-cafele">
+                        <div class="tipuri-cafele-title">
+                            <h3>Tipuri de cafele</h3>
+                        </div>
+                        <div id="coffee-map">
+                            <img src="./resurse/imagini/coffees.jpg"
+                                 alt="coffees"
+                                 usemap="#coffee-regions">
+                            <map name="coffee-regions">
+                                <area shape="rect" coords="0,0,312,278" href="https://www.youtube.com/watch?v=F4wrUP4c5P4&ab_channel=JamesHoffmann" target="_blank" alt="espresso-zone">
+                                <area shape="rect" coords="0,278,312,557" href="https://www.youtube.com/watch?v=XQ3TcpI2Lu8&ab_channel=JamesHoffmann" target="_blank" alt="americano-zone">
+                                <area shape="rect" coords="312,0,625,278" href="https://www.youtube.com/watch?v=PgGJ58Qe-m8&ab_channel=ArtistiCoffeeRoasters." target="_blank" alt="cappuccino-zone">
+                                <area shape="rect" coords="312,278,625,557" href="https://www.youtube.com/watch?v=n-Ue4QJz3Mc&ab_channel=ArtistiCoffeeRoasters." target="_blank" alt="latte-zone">
+                            </map>
+                        </div>
+                    </section>
+                </section>
+            </div>
+            <div class="section-5">
+                <section id="tipuri-de-preparare">
+                    <div class="tipuri-de-preparare-title">
+                        <h3>Tipuri de preparare</h3>
+                    </div>
+                    <ul>
+                        <li>
+                            <b>Cafetiera cu filtru</b>
+                            <p>Aceasta este una dintre cele mai populare metode de preparare. Cafeaua este preparată prin trecerea apei fierbinți peste cafeaua măcinată, care se filtrează într-un recipient. Este ideală pentru cei care preferă o cafea mai blândă.</p>
+                        </li>
+                        <li>
+                            <b>Aeropress</b>
+                            <p>Aeropress-ul este o metodă rapidă de preparare a cafelei, care combină presiunea și filtrarea pentru a obține o cafea foarte concentrată și aromatică. Este preferată de iubitorii de cafea care doresc să experimenteze diverse arome.</p>
+                        </li>
+                        <li>
+                            <b>French Press</b>
+                            <p>Metoda french press presupune infuzarea cafelei într-un recipient cu apă fierbinte, urmată de presarea cafelei printr-un filtru metalic. Această metodă oferă o cafea mai densă și mai robustă.</p>
+                        </li>
+                        <li>
+                            <b>Pour-over</b>
+                            <p>Această metodă implică turnarea lentă a apei fierbinți peste cafeaua măcinată, oferind o extracție uniformă a aromei. Este o metodă manuală care necesită puțină practică, dar rezultatele sunt uimitoar.</p>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+            <div class="section-6">
+                <section id="sfaturi">
+                    <div class="sfaturi-title">
+                        <h3>Sfaturi pentru o <b>cafea perfecta</b></h3>
+                    </div>
+                    <ul>
+                        <li>Folosirea apei de calitate: Apa reprezintă aproximativ 98% din cafeaua ta, așa că asigură-te că folosești apă curată și filtrată.</li>
+                        <li>Proaspăt măcinată: Cafeaua ar trebui măcinată chiar înainte de preparare, pentru a-și păstra aroma și prospețimea</li>
+                        <li>Temperatura apei: Apa prea fierbinte poate face cafeaua amară. Ideal este ca temperatura apei să fie între 90-96°C</li>
+                        <li>Raportul cafea-apă: Pentru o cafea echilibrată, respectă raportul ideal de 1:15 (un gram de cafea pentru 15 ml de apă)</li>
+                    </ul>
+                    <div class="table-container">
+                        <table class="table-coffee">
+                            <caption>Top produse vândute</caption>
+                            <thead>
+                            <tr>
+                                <th>Produs</th>
+                                <th>Preț (RON)</th>
+                                <th>Cantitate vândută</th>
+                                <th>Rating ⭐</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Espresso</td>
+                                <td>8</td>
+                                <td>500</td>
+                                <td>4.8</td>
+                            </tr>
+                            <tr>
+                                <td>Latte</td>
+                                <td>12</td>
+                                <td>320</td>
+                                <td>4.6</td>
+                            </tr>
+                            <tr>
+                                <td>Cappuccino</td>
+                                <td>14</td>
+                                <td>270</td>
+                                <td>4.7</td>
+                            </tr>
+                            <tr>
+                                <td>Americano</td>
+                                <td>10</td>
+                                <td>400</td>
+                                <td>4.5</td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="2">Total vânzări</td>
+                                <td>1490</td>
+                                <td>-</td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            <div class="section-7">
+                <section id="tutoriale">
+                    <div class="tutoriale-title">
+                        <h3>Materiale de ajutor</h3>
+                    </div>
+                    <div class="container-iframes">
+                        <div class="container-video-iframe">
+                            <div class="taburi-video-iframe">
+                                <a href="https://www.youtube.com/embed/ftzwByCgNUY" target="VideoFrame">Primul tutorial</a>
+                                <a href="https://www.youtube.com/embed/vFcS080VYQ0" target="VideoFrame">Al doilea tutorial</a>
+                            </div>
+                            <iframe name="VideoFrame"
+                                    width="400"
+                                    height="250"
+                                    src="https://www.youtube.com/embed/ftzwByCgNUY"
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <br>
+                        <embed src="./resurse/best-coffee-practices.pdf"
+                               type="application/pdf"
+                               width="400"
+                               height="250">
+                    </div>
+                </section>
+            </div>
+            <div class="f">
+                <section id="servicii-clienti">
+                    <div class="servicii-clienti-title">
+                        <h2>Servicii Clienți</h2>
+                    </div>
+                    <em>La SleepLess Brews, suntem dedicați să oferim o experiență perfectă pentru fiecare client. Dacă ai întrebări sau ai nevoie de asistență, echipa noastră de suport este aici să te ajute!</em>
+                    <section id="contact">
+                        <h3>Contactează-ne</h3>
+                        <address>
+                            <p>Telefon: <a href="tel:+40123456789">+40 123 456 789</a></p>
+                            <p>Adresa: <a href="https://maps.app.goo.gl/9UWMhPbGFJKMs2J7A">Facultatea de Matematica si Informatica</a></p>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d225.90127774207969!2d26.09937303849227!3d44.43565464279609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff472f47f047%3A0x493984726f0235f9!2sFacultatea%20de%20Matematic%C4%83%20%C8%99i%20Informatic%C4%83!5e1!3m2!1sro!2sro!4v1741171385273!5m2!1sro!2sro"
+                                    width="400"
+                                    height="250"
+                                    style="border:0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
 
-                    </iframe>
+                            </iframe>
 
-                    <p>Email: <a href="mailto:contact@sleeplessbrews.com">contact@sleeplessbrews.com</a></p>
-                    <p>Chat cu noi pe:
-                        <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
-                        <a href="skype:live:sleeplessbrews?chat" target="_blank">Skype</a>
-                    </p>
-
-                </address>
-            </section>
-            <section id="faq">
-                <h3>Întrebări frecvente (FAQ)</h3>
-                <p>Găsește răspunsurile celor mai frecvente întrebări:</p>
-                <details>
-                    <summary>
-                        Cum pot plasa o comandă?
-                    </summary>
-                    <p>Poți plasa o comandă direct pe site-ul nostru, adăugând produsele dorite în coșul de cumpărături și completând detaliile de plată.</p>
-                </details>
-                <details>
-                    <summary>
-                        Cum pot urmări comanda mea?
-                    </summary>
-                    <p>După plasarea comenzii, vei primi un email cu detaliile de expediere și un număr de urmărire.</p>
-                </details>
-                <details>
-                    <summary>
-                        Care sunt opțiunile de livrare?
-                    </summary>
-                    <p>Oferim livrare rapidă și standard, cu opțiuni de livrare acasă sau la puncte de colectare.</p>
-                </details>
-                <details>
-                    <summary>
-                        Cum pot returna un produs?
-                    </summary>
-                    <p>Dacă nu ești mulțumit de produsul tău, poți returna produsul în termen de 14 zile pentru schimb sau rambursare.</p>
-                </details>
-            </section>
+                            <p>Email: <a href="mailto:contact@sleeplessbrews.com">contact@sleeplessbrews.com</a></p>
+                            <p>Chat cu noi pe:
+                                <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
+                                <a href="skype:live:sleeplessbrews?chat" target="_blank">Skype</a>
+                            </p>
+                        </address>
+                    </section>
+                </section>
+            </div>
+        </div>
+        <section id="faq">
+            <h3>Întrebări frecvente (FAQ)</h3>
+            <p>Găsește răspunsurile celor mai frecvente întrebări:</p>
+            <details>
+                <summary>
+                    Cum pot plasa o comandă?
+                </summary>
+                <p>Poți plasa o comandă direct pe site-ul nostru, adăugând produsele dorite în coșul de cumpărături și completând detaliile de plată.</p>
+            </details>
+            <details>
+                <summary>
+                    Cum pot urmări comanda mea?
+                </summary>
+                <p>După plasarea comenzii, vei primi un email cu detaliile de expediere și un număr de urmărire.</p>
+            </details>
+            <details>
+                <summary>
+                    Care sunt opțiunile de livrare?
+                </summary>
+                <p>Oferim livrare rapidă și standard, cu opțiuni de livrare acasă sau la puncte de colectare.</p>
+            </details>
+            <details>
+                <summary>
+                    Cum pot returna un produs?
+                </summary>
+                <p>Dacă nu ești mulțumit de produsul tău, poți returna produsul în termen de 14 zile pentru schimb sau rambursare.</p>
+            </details>
         </section>
         <script src="./js/modules/index.js"></script>
     </main>
     <footer>
-        <a href="#">Înapoi Acasă</a>
+<!--        <a href="#" title="mergi sus" id="link-top"><i class="fa-solid fa-arrow-up sageata"></i></a>-->
+        <a href="#" title="mergi sus">
+            <div class="container-link-top">
+                <div class="link-top-wrapper">
+                    <div class="link-top-border"></div>
+                    <div class="link-top">
+                        <i class="fa-solid fa-arrow-up sageata"></i>
+                    </div>
+                </div>
+            </div>
+        </a>
         <br>
         <small>
             &copy; <time datetime="2025-03-02">2025 SleepLess Brews. Toate drepturile rezervate.</time>
