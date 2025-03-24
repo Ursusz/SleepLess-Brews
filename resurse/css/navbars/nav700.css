@@ -1,0 +1,9 @@
+ul.nav-bar{
+    display: flex;
+    flex-direction: column;
+}
+nav{
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+}

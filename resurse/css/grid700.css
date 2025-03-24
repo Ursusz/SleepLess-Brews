@@ -1,0 +1,23 @@
+.grid-pagina{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+.f{
+    grid-area: f;
+}
+.grid-pagina > *{
+    outline: 1px solid var(--border-color);
+    border-radius: 5px;
+    box-shadow: 0 0 15px 3px var(--border-color);
+    padding: var(--spatiere-grid);
+    background-color: var(--background-color);
+}
+.grid-pagina > div{
+    box-sizing: border-box;
+}
+#coffee-map{
+    padding-bottom: 45px;
+}

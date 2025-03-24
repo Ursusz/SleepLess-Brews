@@ -1,0 +1,55 @@
+.grid-pagina{
+    display: grid;
+    grid-template-areas: "s1 s1 s1 s1"
+                        "s8 s8 s8 s8"
+                        "s3 s2 s2 s4"
+                        "s5 s6 s7 s7"
+                        "f f f f";
+    color: var(--text-color);
+    grid-gap: var(--grid-gap);
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+.section-1{
+    grid-area: s1;
+}
+.section-2{
+    grid-area: s2;
+}
+.section-3{
+    grid-area: s3;
+    max-width: 700px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.section-4{
+    grid-area: s4;
+    min-width: 500px;
+}
+.section-5{
+    grid-area: s5;
+}
+.section-6{
+    grid-area: s6;
+}
+.section-7{
+    grid-area: s7;
+}
+.section-8{
+    grid-area: s8;
+}
+.f{
+    grid-area: f;
+}
+.grid-pagina > *{
+    outline: 1px solid var(--border-color);
+    border-radius: 5px;
+    box-shadow: 0 0 15px 3px var(--border-color);
+    padding: var(--spatiere-grid);
+    background-color: var(--background-color);
+}
+.grid-pagina > div{
+    padding: 25px;
+}
