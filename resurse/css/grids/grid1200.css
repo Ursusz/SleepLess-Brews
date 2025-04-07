@@ -28,7 +28,6 @@
 }
 .section-4{
     grid-area: s4;
-    min-width: 500px;
 }
 .section-5{
     grid-area: s5;

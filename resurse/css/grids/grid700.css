@@ -1,5 +1,7 @@
 .grid-pagina{
-    display: flex;
+    grid-template-areas: none;
+    grid-gap: 0;
+    display: flex !important;
     flex-grow: 1;
     flex-direction: column;
     margin-top: 45px;
@@ -20,4 +22,9 @@
 }
 #coffee-map{
     padding-bottom: 45px;
+}
+
+#grid-cafele{
+    display: flex !important;
+    flex-direction: column;
 }

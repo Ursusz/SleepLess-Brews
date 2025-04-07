@@ -1,89 +1,35 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="cafea, coffee, espresso, cafea proaspata, cafea boabe, cafea macinata, cafea 100% arabica, cafea fara cofeina, coffee shop, bauturi calde, atmosfera relaxanta, cafea de specialitate, intalniri cu prietenii, cafea artizanala, bauturi cu lapte, relaxare, loc de intalnire, cappuccino, latte, cafea proaspat prajita">
     <meta name="description" content="Sleepless Brews este magazinul tau online de cafea, creat pentru noptile care nu se mai termina si diminetile care vin prea devreme">
     <meta name="author" content="Ursu Alexandru Petruț">
-
-    <link rel="icon" type="image/png" href="./resurse/imagini/ico/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="./resurse/imagini/ico/favicon.svg" />
-    <link rel="shortcut icon" href="./resurse/imagini/ico/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./resurse/imagini/ico/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Coffee Shop" />
-    <link rel="manifest" href="./resurse/imagini/ico/site.webmanifest" />
-<!--    <link rel="stylesheet" href="resurse/css/pages/index.css">-->
-    <link rel="stylesheet" href="resurse/css/general/general.css">
-    <link rel="stylesheet" href="./resurse/css/navbars/nav.css">
-    <link rel="stylesheet" href="./resurse/css/navbars/nav700.css" type="text/css" media="screen and (max-width:700px)">
-    <link rel="stylesheet" href="resurse/css/grids/grid1200.css" type="text/css" media="screen and (max-width:12000px)">
-    <link rel="stylesheet" href="resurse/css/grids/grid700.css" type="text/css" media="screen and (max-width:700px)">
-    <link rel="stylesheet" href="resurse/css/grids/grid.css">
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&family=Poiret+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Passion+One:wght@400;700;900&family=Poiret+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-
     <title>SleepLess Brews</title>
-</head>
-<body>
-    <header>
-        <h1 class="shop-name"><i lang="en">SleepLess Brews</i></h1>
-        <nav>
-            <ul class="nav-bar">
-                <li>
-                    <a href="#acasa">Acasă</a>
-                    <ul>
-                        <li><a href="/abc">Despre noi</a></li>
-                        <li><a href="#istoric">Istoric</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#cafea">Cafea</a>
-                </li>
-                <li>
-                    <a href="#ghiduri">Ghiduri</a>
-                    <ul>
-                        <li><a href="#tipuri-de-cafele">Tipuri de Cafele</a></li>
-                        <li><a href="#tipuri-de-preparare">Tipuri de preparare</a></li>
-                        <li><a href="#sfaturi">Sfaturi</a></li>
-                        <li><a href="#tutoriale">Materiale de ajutor</a></li>
-                    </ul>
-                </li>
 
-                <li>
-                    <a href="#servicii-clienti">Servicii Clienți</a>
-                    <ul>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <%- include("../fragmente/head.ejs") %>
+</head>
+<body data-watermark="Ursu
+Alexandru Petrut">
+    <%- include("../fragmente/header.ejs") %>
     <main>
         <div class="grid-pagina">
             <div class="section-1">
                 <section id="acasa">
                     <div class="home-title">
                         <h2>Acasă</h2>
+                        <p><b>IP: </b><%- locals.ip %></p>
                     </div>
                     <section id="intro">
                         <div class="banner">
                             <h3>SleepLess Brews</h3>
                             <figure>
                                 <picture>
-                                    <source srcset="resurse/imagini/coffee-home-page/coffee-home-page-small.jpg"
+                                    <source srcset="/resurse/imagini/coffee-home-page/coffee-home-page-small.jpg"
                                             media="(max-width:700px)">
-                                    <source srcset="resurse/imagini/coffee-home-page/coffee-home-page-medium.jpg"
+                                    <source srcset="/resurse/imagini/coffee-home-page/coffee-home-page-medium.jpg"
                                             media="(max-width:1200px)">
-                                    <img src="resurse/imagini/coffee-home-page/coffee-home-page-large.jpg" alt="coffee-home-page">
+                                    <img src="/resurse/imagini/coffee-home-page/coffee-home-page-large.jpg" alt="coffee-home-page">
                                 </picture>
                                 <figcaption>Noi îți dăm energia de care ai nevoie să te bucuri de viață!</figcaption>
                             </figure>
@@ -92,7 +38,7 @@
                         <em> - Cassandra Clare</em>
                         <br>
                         <div class="download-banner-button">
-                            <a href="resurse/imagini/coffee-home-page/coffee-home-page-large.jpg" download="photo.png" class="download-banner">
+                            <a href="/resurse/imagini/coffee-home-page/coffee-home-page-large.jpg" download="photo.png" class="download-banner">
                                 <i class="fa-solid fa-download"></i>
                             </a>
                         </div>
@@ -139,49 +85,47 @@
                     <li><b>Cadouri pentru iubitorii de cafea</b> - Pachete speciale pentru cei dragi.</li>
                 </ul>
                 <p>În contextul site-ului nostru apreciem fidelitatea clienților, astfel la fiecare comandă prețul final din coș va avea următoarea formulă:</p>
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mi class="pret-final">pret_final</mi>
-                        <mo>=</mo>
-                        <mi class="pret-initial">pret_initial</mi>
-                        <mo>-</mo>
-                        <mfrac class="fraction">
-                            <mi>numar_comenzi_luna_anterioara</mi>
-                            <mn>100</mn>
-                        </mfrac>
-                        <mo>&#215;</mo>
-                        <mi class="pret-initial">pret_initial</mi>
-                    </mrow>
-                </math>
             </div>
             <div class="section-4">
                 <div id="grid-cafele">
                     <section id="espresso">
                         <b>Espresso</b>
                         <br>
-                        <img src="resurse/imagini/espresso/espresso-large.jpg"
-                             alt="espresso">
+                        <source srcset="/resurse/imagini/espresso/espresso-small.jpg"
+                                media="(max-width:700px)">
+                        <source srcset="/resurse/imagini/espresso/espresso-medium.jpg"
+                                media="(max-width:1200px)">
+                        <img src="/resurse/imagini/espresso/espresso-large.jpg" alt="espresso">
                         <p>Este baza tuturor băuturilor pe bază de <b>cafea</b>. <b>Espresso</b> este o <b>cafea</b> concentrată, preparată prin presarea apei fierbinți prin <b>cafeaua</b> măcinată fin. Este ideală pentru iubitorii de <b>cafea intensă</b>.</p>
                     </section>
                     <section id="cappuccino">
                         <b>Cappuccino</b>
                         <br>
-                        <img src="resurse/imagini/cappuccino/cappuccino-large.jpg"
-                             alt="cappuccino">
+                        <source srcset="/resurse/imagini/cappuccino/cappuccino-small.jpg"
+                                media="(max-width:700px)">
+                        <source srcset="/resurse/imagini/cappuccino/cappuccino-medium.jpg"
+                                media="(max-width:1200px)">
+                        <img src="/resurse/imagini/cappuccino/cappuccino-large.jpg" alt="cappuccino">
                         <p>Oferă un <b>echilibru</b> perfect între <b>echilibru</b>, <b>lapte</b> vaporizat și spumă de <b>lapte</b>. Un <b>cappuccino</b> bine preparat va avea o <b>textură cremoasă</b> și un <b>gust echilibrat</b>.</p>
                     </section>
                     <section id="latte">
                         <b>Latte</b>
                         <br>
-                        <img src="resurse/imagini/latte/latte-large.jpg"
-                             alt="latte">
+                        <source srcset="/resurse/imagini/latte/latte-small.jpg"
+                                media="(max-width:700px)">
+                        <source srcset="/resurse/imagini/latte/latte-medium.jpg"
+                                media="(max-width:1200px)">
+                        <img src="/resurse/imagini/latte/latte-large.jpg" alt="latte">
                         <p><b>Latte</b>-ul este similar cu <b>cappuccino-ul</b>, dar conține mai mult <b>lapte vaporizat</b> și mai puțină <b>spumă</b>. Este mai ușor și mai puțin <b>intens</b> decât un <b>cappuccino</b>, fiind perfect pentru cei care preferă o <b>cafea</b> mai puțin <b>concentrată</b>.</p>
                     </section>
                     <section id="americano">
                         <b>Americano</b>
                         <br>
-                        <img src="resurse/imagini/americano/americano-large.jpg"
-                             alt="americano">
+                        <source srcset="/resurse/imagini/americano/americano-small.jpg"
+                                media="(max-width:700px)">
+                        <source srcset="/resurse/imagini/americano/americano-medium.jpg"
+                                media="(max-width:1200px)">
+                        <img src="/resurse/imagini/americano/americano-large.jpg" alt="americano">
                         <p>Se obține prin diluarea unui <b>espresso</b> cu <b>apă fierbinte</b>. Este o <b>băutură</b> mai ușoară, cu un <b>gust</b> mai puțin <b>intens</b>, ideală pentru cei care nu vor o <b>cafea</b> prea <b>concentrată</b>.</p>
                     </section>
                 </div>
@@ -197,9 +141,11 @@
                             <h3>Tipuri de cafele</h3>
                         </div>
                         <div id="coffee-map">
-                            <img src="resurse/imagini/coffees/coffees-large.jpg"
-                                 alt="coffees"
-                                 usemap="#coffee-regions">
+                            <source srcset="/resurse/imagini/coffees/coffees-small.jpg"
+                                    media="(max-width:700px)">
+                            <source srcset="/resurse/imagini/coffees/coffees-medium.jpg"
+                                    media="(max-width:1200px)">
+                            <img src="/resurse/imagini/coffees/coffees-large.jpg" alt="coffees">
                             <map name="coffee-regions">
                                 <area shape="rect" coords="0,0,312,278" href="https://www.youtube.com/watch?v=F4wrUP4c5P4&ab_channel=JamesHoffmann" target="_blank" alt="espresso-zone">
                                 <area shape="rect" coords="0,278,312,557" href="https://www.youtube.com/watch?v=XQ3TcpI2Lu8&ab_channel=JamesHoffmann" target="_blank" alt="americano-zone">
@@ -313,7 +259,7 @@
                             </iframe>
                         </div>
                         <br>
-                        <embed src="./resurse/best-coffee-practices.pdf"
+                        <embed src="/resurse/best-coffee-practices.pdf"
                                type="application/pdf"
                                width="400"
                                height="250">
@@ -339,6 +285,7 @@
                                     loading="lazy"
                                     referrerpolicy="no-referrer-when-downgrade"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+
                             </iframe>
 
                             <p>Email: <a href="mailto:contact@sleeplessbrews.com">contact@sleeplessbrews.com</a></p>
@@ -379,24 +326,9 @@
                 <p>Dacă nu ești mulțumit de produsul tău, poți returna produsul în termen de 14 zile pentru schimb sau rambursare.</p>
             </details>
         </section>
-        <script src="index.js"></script>
+        <script src="../../index.js"></script>
     </main>
-    <footer>
 <!--        <a href="#" title="mergi sus" id="link-top"><i class="fa-solid fa-arrow-up sageata"></i></a>-->
-        <a href="#" title="mergi sus">
-            <div class="container-link-top">
-                <div class="link-top-wrapper">
-                    <div class="link-top-border"></div>
-                    <div class="link-top">
-                        <i class="fa-solid fa-arrow-up sageata"></i>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <br>
-        <small>
-            &copy; <time datetime="2025-03-02">2025 SleepLess Brews. Toate drepturile rezervate.</time>
-        </small>
-    </footer>
+    <%- include("../fragmente/footer.ejs") %>
 </body>
 </html>
