@@ -1,0 +1,40 @@
+<head>
+    <link rel="stylesheet" href="/resurse/css/galerie.css" type="text/css">
+</head>
+<div class="galerie-grid">
+    <% if (imaginiGalerie && imaginiGalerie.length > 0) { %>
+        <% imaginiGalerie.forEach(function (imagine, index) { %>
+            <figure class="item-galerie">
+                <picture>
+                    <% if (imagine) { %>
+                        <source media="(max-width: 600px)" srcset="<%= imagine.fisier_mic || imagine.fisier %>">
+                        <source media="(max-width: 992px)" srcset="<%= imagine.fisier_mediu || imagine.fisier %>">
+                        <img src="<%= imagine.fisier %>"
+                             alt="<%= imagine.alt ? imagine.alt : imagine.fisier %>"
+                             title="<%= imagine.descriere %>">
+                    <% } else { %>
+                        <img src="resurse/imagini/poster-latte.jpg" alt="Imagine lipsă" title="Imagine lipsă">
+                    <% } %>
+                </picture>
+                <figcaption>
+                    <span class="index-grecesc"></span> <%= imagine.descriere %>
+                </figcaption>
+            </figure>
+        <% }); %>
+    <% } else { %>
+        <p>Nu sunt imagini de afisat pentru luna curenta.</p>
+    <% } %>
+</div>
+<script>
+    const indiciGrecesti = ["α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ", "μ"];
+    const indexElemente = document.querySelectorAll('.index-grecesc');
+    indexElemente.forEach((element, index) => {
+        element.textContent = indiciGrecesti[index] + ".";
+    });
+</script>
+<style>
+    .index-grecesc {
+        margin-right: 5px;
+        font-weight: bold;
+    }
+</style>

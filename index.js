@@ -17,12 +17,12 @@ client=new Client({
 
 client.connect()
 client.query("select * from prajituri", function(err, rezultat ){
-    console.log(err)
-    console.log(rezultat)
+    // console.log(err)
+    // console.log(rezultat)
 })
 client.query("select * from unnest(enum_range(null::categ_prajitura))", function(err, rezultat ){
-    console.log(err)
-    console.log(rezultat)
+    // console.log(err)
+    // console.log(rezultat)
 })
 
 
@@ -90,7 +90,7 @@ for(let numeFis of vFisiere){
     }
 }
 
-fs.watch(obGlobal.folderScss, function(eveniment, numeFis){
+fs.watch(obGlobal.folderScss, (eveniment, numeFis) =>{
     // console.log(eveniment, numeFis);
     if (eveniment=="change" || eveniment=="rename"){
         let caleCompleta=path.join(obGlobal.folderScss, numeFis);
@@ -122,17 +122,30 @@ function initImagini(){
 
     let caleAbs=path.join(__dirname,obGlobal.obImagini.cale_galerie);
     let caleAbsMediu=path.join(__dirname,obGlobal.obImagini.cale_galerie, "mediu");
+    let caleAbsMic = path.join(__dirname, obGlobal.obImagini.cale_galerie, "mic");
+    // console.log("caleabsmic", caleAbsMic);
+
     if (!fs.existsSync(caleAbsMediu))
         fs.mkdirSync(caleAbsMediu);
+    if(!fs.existsSync(caleAbsMic))
+        fs.mkdirSync(caleAbsMic);
 
     for (let imag of vImagini){
         [numeFis, ext]=imag.fisier.split(".");
         let caleFisAbs=path.join(caleAbs,imag.fisier);
         let caleFisMediuAbs=path.join(caleAbsMediu, numeFis+".webp");
-        sharp(caleFisAbs).resize(300).toFile(caleFisMediuAbs);
-        imag.fisier_mediu=path.join("/", obGlobal.obImagini.cale_galerie, "mediu",numeFis+".webp" )
-        imag.fisier=path.join("/", obGlobal.obImagini.cale_galerie, imag.fisier )
+        let caleFisMicAbs = path.join(caleAbsMic, numeFis+".webp");
 
+        if (!fs.existsSync(caleFisMediuAbs)) {
+            sharp(caleFisAbs).resize(300).toFile(caleFisMediuAbs);
+        }
+        if (!fs.existsSync(caleFisMicAbs)) {
+            sharp(caleFisAbs).resize(150).toFile(caleFisMicAbs);
+        }
+
+        imag.fisier_mic = path.join("/", obGlobal.obImagini.cale_galerie, "mic", numeFis+".webp");
+        imag.fisier_mediu=path.join("/", obGlobal.obImagini.cale_galerie, "mediu",numeFis+".webp");
+        imag.fisier=path.join("/", obGlobal.obImagini.cale_galerie, imag.fisier);
     }
     // console.log(obGlobal.obImagini)
 }
@@ -163,14 +176,36 @@ function afisareEroare(res, identificator, titlu, text, imagine){
 
 }
 
+function getLunaCurenta() {
+    const luni = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie",
+        "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
+    const dataCurenta = new Date();
+    const indexLuna = dataCurenta.getMonth();
+    return luni[indexLuna];
+}
+
 app.use("/resurse", express.static(path.join(__dirname,'resurse')));
 app.use("/node_modules", express.static(path.join(__dirname, 'node_modules')));
 app.get("/favicon.ico", (req, res) => {
     res.sendFile(path.join(__dirname, "resurse/imagini/ico/favicon.ico"))
 })
 
+app.get("/galerie", (req, res) => {
+    const lunaCurenta = getLunaCurenta();
+    const imaginiFiltrate = obGlobal.obImagini.imagini
+        .filter(imagine => imagine.luni.includes(lunaCurenta))
+        .slice(0, 12);
+    res.render("pagini/paginagalerie", {
+        imaginiGalerie: imaginiFiltrate
+    });
+})
+
 app.get(["/", "/home", "/index"], (req, res) => {
-    res.render("pagini/index",{ip: req.ip, imagini:obGlobal.obImagini.imagini});
+    const lunaCurenta = getLunaCurenta();
+    const imaginiFiltrate = obGlobal.obImagini.imagini
+        .filter(imagine => imagine.luni.includes(lunaCurenta))
+        .slice(0, 12);
+    res.render("pagini/index",{ip: req.ip, imagini:obGlobal.obImagini.imagini, imaginiGalerie: imaginiFiltrate});
 });
 
 app.get("/index/a", (req, res) => {
@@ -196,14 +231,12 @@ app.get("/fisier", (req, res) => {
 });
 
 app.get("/produse", function(req, res){
-    console.log(req.query)
+    // console.log(req.query);
     var conditieQuery=""; // TO DO where din parametri
 
-
-    queryOptiuni=""
+    queryOptiuni="select * from unnest(enum_range(null::categ_prajitura))";
     client.query(queryOptiuni, function(err, rezOptiuni){
-        console.log(rezOptiuni)
-
+        // console.log(rezOptiuni)
 
         queryProduse="select * from prajituri"
         client.query(queryProduse, function(err, rez){
@@ -214,9 +247,9 @@ app.get("/produse", function(req, res){
             else{
                 res.render("pagini/produse", {produse: rez.rows, optiuni:rezOptiuni.rows})
             }
-        })
+        });
     });
-})
+});
 
 app.get(/^\/resurse\/[a-zA-Z0-9_\/]*$/, (req, res, next) => {
     afisareEroare(res, 403);

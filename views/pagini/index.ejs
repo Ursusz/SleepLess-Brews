@@ -17,7 +17,13 @@ Alexandru Petrut">
             <div class="section-1">
                 <section id="acasa">
                     <div class="home-title">
-                        <h2>Acasă</h2>
+                        <div class="container-home-text">
+                            <div class="home-text">
+                                Acasă
+                                <div class="home-text-reflected">
+                                    Acasă
+                                </div>
+                        </div>
                         <p><b>IP: </b><%- locals.ip %></p>
                     </div>
                     <section id="intro">
@@ -69,6 +75,7 @@ Alexandru Petrut">
                     <div class="fa-3x">
                         <i class="fa-solid fa-circle-info fa-beat-fade" style="--fa-beat-fade-opacity: 0.67; --fa-beat-fade-scale: 1.075;"></i>
                     </div>
+                    <hr>
                     <p>La SleepLess Brews, ne mândrim cu selecția noastră premium de <b>cafea</b>, provenită din cele mai bune <b>culturi de cafea</b> din întreaga lume.
                         Deși nu am lansat complet colecția noastră, te invităm să descoperi în curând o gamă variată de produse, inclusiv <b>boabe de cafea</b>, cafea măcinată,
                         băuturi pe bază de cafea și accesorii esențiale pentru <b>iubitorii de cafea</b>.</p>
@@ -160,6 +167,7 @@ Alexandru Petrut">
                 <section id="tipuri-de-preparare">
                     <div class="tipuri-de-preparare-title">
                         <h3>Tipuri de preparare</h3>
+                        <button class="btn btn-secondary" style="margin-left: 5px" onclick="window.open('https://manufakturacafe.ro/tipuri-de-cafea-si-metode-de-preparare/', '_blank')">ClickMe</button>
                     </div>
                     <ul>
                         <li>
@@ -298,6 +306,7 @@ Alexandru Petrut">
                 </section>
             </div>
         </div>
+        <%- include('../fragmente/galerie.ejs') %>
         <section id="faq">
             <h3>Întrebări frecvente (FAQ)</h3>
             <p>Găsește răspunsurile celor mai frecvente întrebări:</p>

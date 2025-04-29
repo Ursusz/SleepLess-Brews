@@ -60,6 +60,36 @@ main{
 p{
   color: var(--text-color)
 }
+hr {
+  height: 12px;
+  border: none;
+  background-image:
+          linear-gradient(to right, var(--border-color) 30%, transparent 5%),
+          linear-gradient(to right, brown 30%, transparent 5%),
+          linear-gradient(to right, var(--text-color) 30%, transparent 5%);
+  background-repeat: repeat-x;
+  background-size: 56px 4px;
+  background-position: 0 0, 3px 4px, 0 8px;
+}
+.container-home-text{
+  .home-text{
+    font-size: 35px;
+    position: relative;
+    &:hover > .home-text-reflected{
+      transform: rotateX(180deg) skew(-48deg) scaleY(0.8) translate(10px, -25px);
+    }
+  }
+  .home-text-reflected{
+    position: absolute;
+    left: 0;
+    top: 100%;
+    transform-origin: 0 0;
+    transform: rotateX(180deg) skew(-45deg) scaleY(0.5) translate(10px, -25px);
+    font-size: 35px;
+    opacity: 50%;
+    transition: transform 0.5s ease-in-out;
+  }
+}
 .shop-name{
   display: flex;
   justify-content: center;
@@ -108,6 +138,11 @@ p{
   display: flex;
   flex-direction: row-reverse;
   text-decoration: none;
+}
+
+.selectat{
+  background-color: yellow;
+  color: green;
 }
 
 .coffee-geek {
@@ -278,7 +313,7 @@ p{
   &>a {
     display: block;
     width: 100%;
-    height: 50px;
+    height: 60px;
     background-color: var(--highlight-color);
     text-align: center;
     text-decoration: none;

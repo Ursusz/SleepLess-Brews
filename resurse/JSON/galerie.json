@@ -1,41 +1,140 @@
 {
-	"cale_galerie":"resurse/imagini/galerie",
+	"cale_galerie": "resurse/imagini/galerie",
 	"imagini": [
 		{
-			"fisier":"briose-frisca.png",
-			"descriere":"Brioșe",
-			"luni":["martie","februarie","noiembrie","aprilie", "decembrie"]
+			"fisier": "coffee_1.jpg",
+			"descriere": "Dark Coffee",
+			"luni": [
+				"septembrie",
+				"ianuarie",
+				"mai",
+				"aprilie"
+			]
 		},
 		{
-			"fisier":"clatite.png",
-			"descriere":"Clătite cu dulceață",
-			"luni":["ianuarie","februarie","iunie"]
-			
+			"fisier": "coffee_2.jpg",
+			"descriere": "Cappuccino",
+			"luni": [
+				"august",
+				"noiembrie",
+				"aprilie"
+			]
 		},
 		{
-			"fisier":"gogosi.png",
-			"descriere":"Gogoși glazurate",
-			"luni":["ianuarie","noiembrie","iunie","martie","aprilie"]
+			"fisier": "coffee_3.jpg",
+			"descriere": "Espresso",
+			"luni": [
+				"mai",
+				"decembrie",
+				"februarie"
+			]
 		},
 		{
-			"fisier":"tort-scortisoara.png",
-			"descriere":"Tort cu scorțisoară",
-			
-			"luni":["noiembrie","aprilie", "decembrie"]
+			"fisier": "coffee_4.jpg",
+			"descriere": "Espresso",
+			"luni": [
+				"iulie",
+				"martie",
+				"octombrie",
+				"aprilie"
+			]
 		},
 		{
-			"fisier":"prajitura-ciocolata.png",
-			"descriere":"Prăjitură cu ciocolată",
-			
-			"luni":["noiembrie","aprilie", "decembrie"]
+			"fisier": "coffee_5.jpg",
+			"descriere": "Espresso",
+			"luni": [
+				"octombrie",
+				"iunie"
+			]
 		},
 		{
-			"fisier":"tarta-afine.png",
-			"descriere":"Tartă cu afine"
+			"fisier": "coffee_6.jpg",
+			"descriere": "Cappuccino",
+			"luni": [
+				"septembrie",
+				"ianuarie",
+				"iulie"
+			]
 		},
 		{
-			"fisier":"tort-trandafiri.png",
-			"descriere":"Tort special"
+			"fisier": "coffee_7.jpg",
+			"descriere": "Dark Coffee",
+			"luni": [
+				"mai",
+				"august"
+			]
+		},
+		{
+			"fisier": "coffee_8.jpg",
+			"descriere": "Milky Coffee",
+			"luni": [
+				"februarie",
+				"noiembrie",
+				"aprilie"
+			]
+		},
+		{
+			"fisier": "coffee_9.jpg",
+			"descriere": "Cappuccino Speciale",
+			"luni": [
+				"august",
+				"martie"
+			]
+		},
+		{
+			"fisier": "coffee_10.jpg",
+			"descriere": "Dark Coffee",
+			"luni": [
+				"iunie",
+				"decembrie",
+				"septembrie"
+			]
+		},
+		{
+			"fisier": "coffee_11.jpg",
+			"descriere": "Espresso",
+			"luni": [
+				"martie",
+				"mai"
+			]
+		},
+		{
+			"fisier": "coffee_12.jpg",
+			"descriere": "Cappuccino",
+			"luni": [
+				"aprilie",
+				"octombrie",
+				"ianuarie"
+			]
+		},
+		{
+			"fisier": "coffee_13.jpg",
+			"descriere": "Espresso",
+			"luni": [
+				"decembrie",
+				"iulie",
+				"aprilie"
+			]
+		},
+		{
+			"fisier": "coffee_14.jpg",
+			"descriere": "Cappuccino",
+			"luni": [
+				"ianuarie",
+				"iunie",
+				"august",
+				"februarie",
+				"aprilie"
+			]
+		},
+		{
+			"fisier": "coffee_15.jpg",
+			"descriere": "Espresso Speciale",
+			"luni": [
+				"iulie",
+				"noiembrie",
+				"aprilie"
+			]
 		}
 	]
 }

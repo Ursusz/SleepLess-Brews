@@ -1,0 +1,29 @@
+@use '../../node_modules/bootstrap/scss/bootstrap.scss' with (
+  $primary: #F2E8DF,
+  $secondary: #D9A689,
+  $border-radius: 5px,
+  $h1-font-size: 0.9rem,
+  $h2-font-size: 0.8rem,
+  $btn-padding-y:   2px,
+  $btn-padding-x:   2px,
+  $btn-font-size:     10px,
+  $btn-line-height:   1.2
+);
+
+$font-family-base: "Arial", sans-serif;
+
+$grid-breakpoints: (
+        sm: 576px,
+        md: 700px,
+        lg: 1200px,
+        xl: 1200px,
+        xxl: 1400px
+);
+
+$body-bg: #FAF0E6;
+$secondary-bg: #E0CBA8;
+
+$body-color: #333;
+$link-color: #8B4513;
+
+$font-weight-base: 400;
