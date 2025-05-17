@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html  lang="ro">
-    <head>
-        <meta name="description" content="Cofetaria Dulcelind ofera prajituri, torturi, produse de patiserie cu optiunea de achizitie online si livrare prin curier.">
-        <meta name="keywords" content="cofetarie, Dulcelind, prajituri, torturi, dulce, pateuri, produse">
-        
-        <title>Cofetăria Dulcelind - home</title>
-        <%- include("../fragmente/head") %>     
-        <link href="/resurse/css/produs.css" type="text/css" rel="stylesheet" />
-    </head>
-    <body>
-        <header class="c1" id="titlu" >
-            <h1 style="color:red;">Cofetaria <span>Dulcelind</span></h1>
-            <%- include("../fragmente/nav") %>
-        </header>
-    <main>
-        <section>
-            <h2>Pagină produs</h2>
-                <article id="art-produs">
-                    <h3><span class="nume"><%- locals.prod.nume %></span></h3>
-                    <p>Pret: <span class="pret"><%- locals.prod.pret %> </span></p>
-                    <p>Descriere: <span class="descriere"><%- locals.prod.descriere %> </span></p>
-                    <p>Ingrediente: <span class="ingrediente"><%- locals.prod.ingrediente %> </span></p>
-                    <p>Calorii: <span class="calorii"><%- locals.prod.calorii %> </span></p>
-                    <p>Gramaj: <span class="gramaj"><%- locals.prod.gramaj %> </span></p>
-                    <p>Categorie: <span class="categorie"><%- locals.prod.categorie %> </span></p>
-                    <p>Pentru diabetici: <span class="pt_diabetici"><%- locals.prod.pt_diabetici %> </span></p>
-                    <p>Data adăugare: <span class="categorie"><%- locals.prod.data_adaugare %> </span></p>
-                    <figure class="imag-produs">
-                        <img  src="/resurse/imagini/produse/<%- locals.prod.imagine %>" alt="[imagine <%- locals.prod.nume %>]" />
-                    </figure>    
-                </article>
-            
-        </section>
-    </main>
+<head>
+    <meta name="description" content="SleepLess Brews oferă o varietate de cafele, accesorii și aparate pentru o experiență perfectă acasă. Descoperă arome unice!">
+    <meta name="keywords" content="cafea, specialitate, boabe, măcinată, espresso, filtru, origine, arome, SleepLess Brews">
 
-    <%- include("../fragmente/footer") %>
-    </body>
+    <title>SleepLess Brews - Produs</title>
+    <%- include("../fragmente/head") %>
+    <link href="/resurse/css/produs.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<%- include("../fragmente/header") %>
+
+<main>
+    <section>
+        <h2>Detalii Produs</h2>
+        <article id="art-produs">
+            <h3><span class="nume"><%- locals.prod.nume %></span></h3>
+            <p>Preț: <span class="pret"><%- locals.prod.pret %> </span></p>
+            <p>Descriere: <span class="descriere"><%- locals.prod.descriere %> </span></p>
+            <% if (locals.prod.origine) { %>
+                <p>Origine: <span class="origine"><%- locals.prod.origine %> </span></p>
+            <% } %>
+            <% if (locals.prod.intensitate) { %>
+                <p>Intensitate: <span class="intensitate"><%- locals.prod.intensitate %> </span></p>
+            <% } %>
+            <% if (locals.prod.note_gust) { %>
+                <p>Note gust: <span class="note_gust"><%- locals.prod.note_gust %> </span></p>
+            <% } %>
+            <% if (locals.prod.procesare) { %>
+                <p>Procesare: <span class="procesare"><%- locals.prod.procesare %> </span></p>
+            <% } %>
+            <p>Categorie: <span class="categorie"><%- locals.prod.categorie %> </span></p>
+            <p>Data adăugare: <span class="data_adaugare"><%- locals.prod.data_adaugare %> </span></p>
+            <figure class="imag-produs">
+                <img  src="/resurse/imagini/produse/<%- locals.prod.imagine %>" alt="[imagine <%- locals.prod.nume %>]" />
+            </figure>
+        </article>
+
+    </section>
+</main>
+
+<%- include("../fragmente/footer") %>
+</body>
 </html>

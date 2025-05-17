@@ -4,6 +4,54 @@ main{
     padding-right:80px;
 }
 
+.form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+.form-label-group > input,
+.form-label-group > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: .75rem .75rem;
+    margin: 0;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .1s;
+    pointer-events: none;
+}
+.form-label-group > label {
+    display: flex;
+    align-items: center;
+    padding: .75rem .75rem;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #fff;
+    border-radius: .25rem;
+    transform-origin: 0 0;
+    z-index: 2;
+}
+.form-label-group > input:placeholder-shown + label {
+    transform: translateY(0);
+    font-size: 1rem;
+    opacity: .65;
+}
+.form-label-group > input:focus + label,
+.form-label-group > input:not(:placeholder-shown) + label {
+    transform: translateY(-.75rem) scale(.8);
+    font-size: .75rem;
+    opacity: .8;
+}
+.form-label-group > input:focus {
+    z-index: 3;
+}
+.form-label-group input.is-invalid ~ label{
+    color: #dc3545;
+}
 .grid-produse{
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -15,8 +63,11 @@ main{
     overflow: hidden;
 }
 
+.nume{
+    color: white;
+}
 .grid-produse .produs h3{
-    background-color: deeppink;
+    background-color: var(--idk-color);
     text-align: center;
     margin-top: 0;
     padding-top: 0.5rem;
@@ -24,7 +75,7 @@ main{
 }
 
 .grid-produse .produs h3 a{
-    color:black;
+    color:navajowhite;
 }
 .grid-produse .produs h3 a:hover{
     color:white;
@@ -37,7 +88,7 @@ main{
 }
 .grid-produse .produs .info-prod{
     display:flex;
-    background-color: pink;
+    background-color: var(--highlight-color);
 }
 .grid-produse .produs .info-prod p{
     width:30%;
@@ -52,7 +103,7 @@ main{
 }
 
 .info-produse{
-    background-color: pink;
+    background-color: var(--highlight-color);
     padding:0.2rem;
     box-shadow: 0px 0px 0.5rem 0.15rem grey;
 }
@@ -62,7 +113,7 @@ main{
 }
 .selecteaza-cos{
     display: inline-block;
-    background-color: mediumpurple;
+    background-color: burlywood;
     position:absolute;
     bottom:0.5rem;
     right:0.5rem;
@@ -73,7 +124,7 @@ main{
 }
 
 .selecteaza-cos:hover{
-    background-color: pink;
+    background-color: var(--highlight-color);
     
-    border:1px solid  mediumpurple;
+    border:1px solid brown;
 }

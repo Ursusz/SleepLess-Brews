@@ -1,68 +1,53 @@
-DROP TYPE IF EXISTS categ_prajitura;
+DROP TYPE IF EXISTS categ_cafea;
 DROP TYPE IF EXISTS tipuri_produse;
 
-CREATE TYPE categ_prajitura AS ENUM('comanda speciala', 'aniversara', 'editie limitata', 'pentru copii', 'dietetica','comuna');
-CREATE TYPE tipuri_produse AS ENUM('cofetarie', 'patiserie', 'gelaterie');
+CREATE TYPE categ_cafea AS ENUM('boabe', 'măcinată', 'capsule', 'instant');
+CREATE TYPE tipuri_produse AS ENUM('cafea', 'accesorii', 'aparate');
 
+CREATE TABLE IF NOT EXISTS cafea (
+                                     id serial PRIMARY KEY,
+                                     nume VARCHAR(50) UNIQUE NOT NULL,
+    descriere TEXT,
+    pret NUMERIC(8,2) NOT NULL,
+    greutate INT NOT NULL CHECK (greutate>=0),
+    tip_produs tipuri_produse DEFAULT 'cafea',
+    intensitate INT CHECK (intensitate BETWEEN 1 AND 5),
+    origine VARCHAR(50),
+    note_gust VARCHAR [],
+    aciditate VARCHAR(50),
+    procesare VARCHAR(50),
+    categorie categ_cafea DEFAULT 'boabe',
+    imagine VARCHAR(300),
+    data_adaugare TIMESTAMP DEFAULT current_timestamp
+    );
 
-CREATE TABLE IF NOT EXISTS prajituri (
-   id serial PRIMARY KEY,
-   nume VARCHAR(50) UNIQUE NOT NULL,
-   descriere TEXT,
-   pret NUMERIC(8,2) NOT NULL,
-   gramaj INT NOT NULL CHECK (gramaj>=0),   
-   tip_produs tipuri_produse DEFAULT 'cofetarie',
-   calorii INT NOT NULL CHECK (calorii>=0),
-   categorie categ_prajitura DEFAULT 'comuna',
-   ingrediente VARCHAR [], --pot sa nu fie specificare deci nu punem NOT NULL
-   pt_diabetici BOOLEAN NOT NULL DEFAULT FALSE,
-   imagine VARCHAR(300),
-   data_adaugare TIMESTAMP DEFAULT current_timestamp
-);
+INSERT INTO cafea (nume, descriere, pret, greutate, intensitate, origine, note_gust, aciditate, procesare, categorie, imagine) VALUES
+                                                                                                                                   ('Arabica Etiopia Yirgacheffe', 'Cafea boabe single origin, cu note florale și citrice.', 25.99, 250, 3, 'Etiopia', '{"floral", "citric", "bergamotă"}', 'ridicată', 'naturală', 'boabe', 'arabica-etiopia.jpg'),
 
-INSERT into prajituri (nume,descriere,pret, gramaj, calorii, tip_produs, categorie, ingrediente, pt_diabetici, imagine) VALUES 
-('Savarină', 'Prăjitură insiropată, cu frișcă', 7.5 , 200, 400, 'cofetarie', 'comuna', '{"faina","lapte","frisca","zahar"}', False, 'aproximativ-savarina.jpg'),
+                                                                                                                                   ('Robusta Vietnam', 'Cafea măcinată, intensă și cu corp bogat.', 18.50, 500, 5, 'Vietnam', '{"ciocolată neagră", "nuci", "amărui"}', 'scăzută', 'uscată', 'măcinată', 'robusta-vietnam.jpg'),
 
-('Amandină', 'Prăjitură cu ciocolată', 6 , 200, 400, 'cofetarie', 'comuna', '{"faina","ciocolata","lapte","zahar","unt"}', False, 'posibil-amandina.jpg'),
+                                                                                                                                   ('Espresso Italian Blend', 'Amestec de cafea boabe pentru un espresso clasic.', 32.75, 1000, 4, 'Brazilia, Columbia, India', '{"ciocolată", "caramel", "note dulci"}', 'medie', 'spălată și naturală', 'boabe', 'espresso-blend.jpg'),
 
-('Tort glazurat', 'Tort pentru evenimente, poate fi decorat cu diverse culori', 35 , 1000, 2500, 'cofetarie', 'comanda speciala', '{"oua","zahar","faina","lapte","ciocolata","alune"}', False,'tort-glazurat.jpg'),
+                                                                                                                                   ('Decaf Columbia Supremo', 'Cafea boabe decofeinizată, cu aromă echilibrată și catifelată.', 28.00, 250, 3, 'Columbia', '{"caramel", "nuci", "corp mediu"}', 'medie', 'spălată (proces decaf)', 'boabe', 'decaf-columbia.jpg'),
 
-('Dulcelind cu fructe', 'Rețetă proprie, cu conținut sănătos (dacă ignorați tonele de zahăr) de fruncte proaspete', 10 , 250, 620, 'cofetarie', 'aniversara', '{"frisca","zahar","faina","zmeura","lapte","mure","capsuni"}', False,'dulcelind.jpg'),
+                                                                                                                                   ('Capsule Espresso Intenso', 'Capsule de cafea cu intensitate ridicată, compatibile cu sistemul X.', 15.20, 50, 5, NULL, '{"intens", "note prăjite", "cremă bogată"}', NULL, NULL, 'capsule', 'capsule-intenso.jpg'),
 
-('Tartă cu căpșuni', 'Sub căpșuni se află o tartă.', 6 , 245, 280, 'cofetarie', 'comuna', '{"vanilie","faina","capsuni","lapte", "indulcitor"}', True,'tarta-capsuni.jpg'),
+                                                                                                                                   ('Cafea Instant Gold', 'Cafea instant de calitate superioară, ușor de preparat.', 12.99, 100, NULL, NULL, '{"echilibrat", "aromatic"}', NULL, NULL, 'instant', 'instant-gold.jpg'),
 
-('Nimic', 'Nimic', 10 , 0, 0, 'cofetarie', 'dietetica', '{}', False, 'nimic.jpg'),
+                                                                                                                                   ('Kenya AA', 'Cafea boabe single origin, aciditate vibrantă și arome fructate.', 29.50, 200, 4, 'Kenya', '{"fructe de pădure", "vin", "aciditate ridicată"}', 'ridicată', 'spălată', 'boabe', 'kenya-aa.jpg'),
 
-('Cozonac zburător', 'Cineva a vărsat heliu peste aluat.', 25.5 , 1000, 1800, 'patiserie', 'comuna', '{"zahar","unt","faina","lapte","cacao","alune", "nuca"}', False, 'cozonac-zburator.jpg'),
+                                                                                                                                   ('Sumatra Mandheling', 'Cafea boabe cu corp plin, note pământoase și aciditate scăzută.', 31.00, 250, 4, 'Indonezia', '{"pământos", "ierburi", "ciocolată neagră"}', 'scăzută', 'semi-spălată', 'boabe', 'sumatra-mandheling.jpg'),
 
-('Brioșe', 'Aluat pufos, cu bucățele de ciocolată. Bucățelele de ciocolata, însă, nu sunt tocmai pufoase.', 8 , 145, 320, 'patiserie', 'comuna', '{"ciocolata","lapte","unt","migdale","faina","zahar"}', False, 'briose.jpg'),
+                                                                                                                                   ('Măcinată French Press', 'Cafea măcinată grosier, ideală pentru prepararea la French Press.', 22.00, 500, 3, 'Brazilia, Etiopia', '{"corp bogat", "note florale"}', 'medie', 'naturală și spălată', 'măcinată', 'macinata-french-press.jpg'),
 
-('Turtă dulce', 'Un produs bun de savurat de Craciun. Sau și mai târziu dacă stocul a depășit cererea. De obicei mai găsiți și prin iunie...', 12 , 400, 550, 'patiserie', 'aniversara', '{"faina","lapte","scortisoara","zahar","unt"}', False, 'turta-dulce.jpg'),
+                                                                                                                                   ('Capsule Lungo Crema', 'Capsule de cafea pentru un lungo cremos și aromat.', 14.80, 55, 3, NULL, '{"fin", "aromatic", "cremă delicată"}', NULL, NULL, 'capsule', 'capsule-lungo.jpg'),
 
-('Turtă dulce dietetică', 'Îndulcitor în loc de zahăr. Dar nu vă lăsați păcăliți de nume, în rest nimic nu-i dietetic.', 10 , 400, 520, 'patiserie', 'aniversara', '{"faina","lapte","zaharina","unt","scortisoara"}', True, 'turta-dulce-dietetica.jpg'),
+                                                                                                                                   ('Cafea Instant Decaf', 'Cafea instant decofeinizată, pentru o băutură rapidă fără cofeină.', 11.50, 80, NULL, NULL, '{"bland", "ușor"}', NULL, NULL, 'instant', 'instant-decaf.jpg'),
 
-('Căsuță din turtă dulce', 'Vine cu tot cu vrăjitoare și cuptor la pachet. A nu se lăsa în mijlocul pădurii.', 70 , 450, 2700, 'patiserie', 'aniversara', '{"unt","scortisoara", "oua","faina","lapte","zahar"}', False, 'casuta-turta-dulce.jpg'),
+                                                                                                                                   ('Boabe Espresso Barista', 'Amestec premium de boabe, ideal pentru barista acasă.', 38.99, 1000, 4, 'America Centrală și de Sud', '{"nuci", "caramel", "echilibrat"}', 'medie', 'spălată', 'boabe', 'boabe-barista.jpg'),
 
-('Croissant', 'Un răsfăț pufos și dulce... mda... dulce... dacă nu încurcă Dorelina, iar, sarea cu zahărul!!!', 5 , 150, 285, 'patiserie', 'comuna', '{"faina","lapte","zahar/sare","unt","ciocolata","migdale"}', False, 'croissant.jpg'),
+                                                                                                                                   ('Măcinată Espresso', 'Cafea fin măcinată, perfectă pentru espressor.', 24.50, 250, 4, 'Columbia, Brazilia', '{"ciocolată", "note dulci"}', 'medie', 'spălată', 'măcinată', 'macinata-espresso.jpg'),
 
-('Prajitura căpșuni', 'Prăjitura se face doar cu comandă specială, fiindcă apoi o comandăm și noi la rândul nostru la cofetăria vecină.', 15 , 180, 385, 'cofetarie', 'comanda speciala', '{"faina","lapte","zahar", "capsuni","unt","gelatina"}', False, 'prajitura-capsuni.jpg'),
+                                                                                                                                   ('Capsule Ristretto Intens', 'Capsule pentru un ristretto scurt și intens.', 16.00, 45, 5, NULL, '{"puternic", "note amare"}', NULL, NULL, 'capsule', 'capsule-ristretto.jpg'),
 
-('Nasturei cu dulceață', 'Pentru când năstureii normali cedează fiindcă ați mâncat prea multă dulceață', 20.5 , 350, 700, 'patiserie', 'comuna', '{"migdale", "faina","lapte","zahar","unt","dulceata"}', False, 'nasturei-dulceata.jpg'),
-
-
-('Bomboane de ciocolată pe băț', 'Bățul e cel comestibil, nu bomboana.', 6, 100, 210,'cofetarie', 'pentru copii', '{"ciocolata", "zahar", "lapte", "alune", "faina"}', False, 'bomboane-ciocolata-bat.jpg'),
-
-('Înghețată fumătoare', 'Din când în când, tușește... Dar nu are COVID!', 18.5 , 225, 370, 'gelaterie', 'comuna', '{"smantana","lapte","migdale", "dulceata","zahar","vanilie","ciocolata", "frisca"}', False, 'inghetata-fumatoare.jpg'),
-
-
-('Înghețată multicoloră', 'Când storci un curcubeu peste înghețată... Ediție limitată; fabricăm doar după ploaie.', 12 , 120, 270, 'gelaterie', 'editie limitata', '{"smantana","lapte","migdale", "dulceata","zahar","vanilie","ciocolata", "frisca"}', False, 'inghetata-multicolora.jpg'),
-
-
-('Brioșă cu înghețată', 'Nu încercam să fim creativi... Dorelina a încurcat iar rețetele. Măcar are culoare roz', 14 , 235, 340, 'gelaterie', 'pentru copii', '{"frisca", "smantana", "lapte", "ceva roz", "faina","zahar","vanilie"}', False, 'briosa-inghetata.jpg'),
-
-('Înghețată generică', 'Când bușim așa de tare rețeta încât nu se mai încadrează în niuna dintre celelalte categorii.', 8, 90, 130, 'gelaterie','comuna','{"frisca", "smantana", "lapte", "ceva roz", "faina","zahar","vanilie"}', False, 'inghetata-generica.jpg'),
-
-('Imagine cu înghețată', 'Pentru cei aflați la dietă.', 5, 10,10,'gelaterie', 'comuna', '{"hârtie", "tuș"}', False, 'imagine-cu-inghetata.jpg'),
-
-
-('Bomboane colorate', 'Pentru copiii care doresc să afle devreme cum e o vizită la dentist.', 7, 150,340,'cofetarie', 'pentru copii', '{"zahar", "ciocolata","lapte"}', False, 'bomboane-colorate.jpg');
+                                                                                                                                   ('Cafea Instant Vanilie', 'Cafea instant cu aromă bogată de vanilie.', 13.75, 120, NULL, NULL, '{"vanilie", "dulce"}', NULL, NULL, 'instant', 'instant-vanilie.jpg');

@@ -50,6 +50,16 @@ body{
   --spatiere-pagina: 80px;
   --spatiere-grid: 15px;
   --grid-gap: 25px;
+  &.dark{
+    --text-color: #000;
+    --background-color: #b7804e;
+    --highlight-color: #714025;
+    --border-color: #A6735E;
+    --idk-color: #130908;
+    --spatiere-pagina: 80px;
+    --spatiere-grid: 15px;
+    --grid-gap: 25px;
+  }
 }
 
 main{
@@ -334,12 +344,13 @@ hr {
 }
 
 .container-video-iframe{
-  width: 60%;
+  width: 100%;
   max-width: 500px;
   min-width: 200px;
   display: flex;
   flex-direction: row-reverse;
-
+  align-items: center;
+  justify-content: center;
   &>iframe{
     width: 100%;
   }
