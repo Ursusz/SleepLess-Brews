@@ -19,10 +19,11 @@
             <li>
                 <a href="/produse">Produse</a>
                 <ul>
-                    <li><a href="/produse?tip=boabe">Boabe</a></li>
-                    <li><a href="/produse?tip=măcinată">Măcinată</a></li>
-                    <li><a href="/produse?tip=capsule">Capsule</a></li>
-                    <li><a href="/produse?tip=instant">Instant</a></li>
+                    <% if (locals.categoriiMeniu && locals.categoriiMeniu.length > 0) { %>
+                        <% locals.categoriiMeniu.forEach(function(categorie) { %>
+                            <li><a href="/produse?tip=<%= categorie %>"><%= categorie.charAt(0).toUpperCase() + categorie.slice(1) %></a></li>
+                        <% }); %>
+                    <% } %>
                 </ul>
             </li>
             <li>
@@ -44,7 +45,11 @@
             </li>
         </ul>
     </nav>
-    <button id="schimba_tema" class="btn btn-outline-secondary mt-2" style="margin-left: 20px;">
-        <i id="tema_icon" class="fas fa-sun" style="width: 20px; height: 20px;"></i>
-    </button>
+    <div class="form-check form-switch mt-2" style="margin-left: 20px;">
+        <input class="form-check-input" type="checkbox" id="schimba_tema">
+        <label class="form-check-label" for="schimba_tema">
+            <i id="tema_icon" class="fas fa-sun" style="width: 20px; height: 20px;"></i>
+        </label>
+    </div>
+
 </header>

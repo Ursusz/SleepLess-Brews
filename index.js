@@ -83,7 +83,7 @@ function compileazaScss(caleScss, caleCss){
     if (fs.existsSync(caleCss)){
         const timestamp = Date.now();
         const numeFisBackup = numeFisCss.replace(".css", `_${timestamp}.css`);
-        fs.copyFileSync(caleCss, path.join(caleBackup, numeFisBackup));
+        // fs.copyFileSync(caleCss, path.join(caleBackup, numeFisBackup));
     }
     rez = sass.compile(caleScss, {"sourceMap":true});
     fs.writeFileSync(caleCss, rez.css)
@@ -189,6 +189,19 @@ function getLunaCurenta() {
     const indexLuna = dataCurenta.getMonth();
     return luni[indexLuna];
 }
+
+app.use(async (req, res, next) => {
+    try {
+        const queryOptiuni = "SELECT unnest(enum_range(NULL::categ_cafea)) AS categorie";
+        const rezOptiuni = await client.query(queryOptiuni);
+        res.locals.categoriiMeniu = rezOptiuni.rows.map(row => row.categorie);
+        next();
+    } catch (err) {
+        console.error("Eroare la obținerea opțiunilor de categorie pentru meniul de navigare:", err);
+        res.locals.categoriiMeniu = [];
+        next();
+    }
+});
 
 app.use("/resurse", express.static(path.join(__dirname,'resurse')));
 app.use("/node_modules", express.static(path.join(__dirname, 'node_modules')));

@@ -7,7 +7,7 @@
   $btn-padding-y:   2px,
   $btn-padding-x:   2px,
   $btn-font-size:     10px,
-  $btn-line-height:   1.2
+  $btn-line-height:   1.2,
 );
 
 $font-family-base: "Arial", sans-serif;
@@ -27,3 +27,59 @@ $body-color: #333;
 $link-color: #8B4513;
 
 $font-weight-base: 400;
+
+.btn-group-toggle > .btn {
+  &.active {
+    background-color: $secondary-bg;
+    color: #fff;
+    border-color: $secondary-bg;
+  }
+  &.focus,
+  &:active {
+    background-color: $secondary-bg;
+    color: #fff;
+    border-color: $link-color;
+    box-shadow: 0 0 0 0.2rem rgba($secondary-bg, 0.5);
+  }
+  &:not(.active) {
+    background-color: transparent;
+    color: $body-color;
+    border-color: #ccc;
+  }
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 5px;
+  background: #ddd;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: $secondary-bg;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: $secondary-bg;
+  cursor: pointer;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba($secondary-bg, 0.3);
+}
+
+input[type="range"]:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 3px rgba($secondary-bg, 0.3);
+}

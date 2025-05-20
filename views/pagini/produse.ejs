@@ -16,67 +16,113 @@
 </header>
 
 <main class="container-fluid">
-    <div class="row">
-        <div class="col-12 col-md-6 col-lg-4  mb-3">
-            <label for="inp-nume" class="form-label">Nume:</label>
-            <input type="text" id="inp-nume" class="form-control">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                <label for="inp-nume" class="form-label">Nume:</label>
+                <input type="text" id="inp-nume" class="form-control" list="sugestii-nume">
+                <datalist id="sugestii-nume">
+                    <option value="Espresso Blend"></option>
+                    <option value="Colombia Supremo"></option>
+                    <option value="Ethiopia Yirgacheffe"></option>
+                    <option value="Decaf Delight"></option>
+                </datalist>
+            </div>
         </div>
-    </div>
 
-    <div class="row mb-3">
-        <div class="col-12 col-md-6 col-lg-4">
-            <label class="form-label">Intensitate:</label>
-            <div class="d-flex flex-wrap">
+        <div class="row mb-3">
+            <div class="col-12 col-md-6 col-lg-4">
+                <label class="form-label">Intensitate:</label>
+                <div class="d-flex flex-wrap">
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-outline-secondary m-1">
+                            <input type="radio" id="i_rad1" name="gr_rad" value="1:2" autocomplete="off"> Ușoară (1-2)
+                        </label>
+                        <label class="btn btn-outline-secondary m-1">
+                            <input type="radio" id="i_rad2" name="gr_rad" value="3:3" autocomplete="off"> Medie (3)
+                        </label>
+                        <label class="btn btn-outline-secondary m-1">
+                            <input type="radio" id="i_rad3" name="gr_rad" value="4:5" autocomplete="off"> Intensă (4-5)
+                        </label>
+                        <label class="btn btn-outline-secondary m-1 active">
+                            <input type="radio" id="i_rad4" checked name="gr_rad" value="toate" autocomplete="off"> Toate
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-12 col-md-6 col-lg-4">
+                <label for="inp-pret" class="form-label">Preț:</label>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span id="min-pret">0</span>
+                    <input type="range" id="inp-pret" class="form-range mx-2" value="0" min="0" max="37">
+                    <span id="max-pret">37</span> <span id="infoRange" class="ms-2">(0)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-12 col-md-6 col-lg-4">
                 <div class="btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-outline-secondary m-1">
-                        <input type="radio" id="i_rad1"  name="gr_rad" value="1:2" autocomplete="off"> Ușoară (1-2)
-                    </label>
-                    <label class="btn btn-outline-secondary m-1">
-                        <input type="radio" id="i_rad2"  name="gr_rad" value="3:3" autocomplete="off"> Medie (3)
-                    </label>
-                    <label class="btn btn-outline-secondary m-1">
-                        <input type="radio" id="i_rad3" name="gr_rad" value="4:5" autocomplete="off"> Intensă (4-5)
-                    </label>
-                    <label class="btn btn-outline-secondary m-1">
-                        <input type="radio" id="i_rad4" checked name="gr_rad" value="toate" autocomplete="off"> Toate
+                    <label class="btn btn-outline-secondary">
+                        <input type="checkbox" value="noutati" id="chk-noutati" autocomplete="off"> Noutăți
                     </label>
                 </div>
             </div>
         </div>
+
+
+        <div class="row mb-3">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="form-floating">
+                    <textarea class="form-control" id="txt-descriere-min" rows="3" placeholder="Caută după cuvinte cheie în descriere..."></textarea>
+                    <label for="txt-descriere-min" class="form-label">Descriere Minimă:</label>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mb-3">
+            <div class="col-12 col-md-6 col-lg-4">
+                <label for="inp-categorie" class="form-label">Selectează categoria:</label>
+                <select id="inp-categorie" class="form-select">
+                    <option id="sel-toate" selected value="toate">Toate Categoriile</option>
+                    <% if (locals.optiuniCategorie && locals.optiuniCategorie.length > 0) { %>
+                        <% for (let opt of locals.optiuniCategorie) { %>
+                            <option value="<%- opt.unnest %>"><%- opt.unnest.charAt(0).toUpperCase() + opt.unnest.slice(1) %></option>
+                        <% } %>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-12 col-md-6 col-lg-4">
+                <label for="inp-origini-multiple" class="form-label">Selectează Origini (Multiple):</label>
+                <select id="inp-origini-multiple" class="form-select" multiple size="4">
+                    <option value="oricare">Oricare</option>
+                    <option value="Brazilia">Brazilia</option>
+                    <option value="Columbia">Columbia</option>
+                    <option value="Etiopia">Etiopia</option>
+                    <option value="Vietnam">Vietnam</option>
+                    <option value="Indonezia">Indonezia</option>
+                    <option value="Peru">Peru</option>
+                </select>
+            </div>
+        </div>
     </div>
+
 
     <div class="row mb-3">
         <div class="col-12 col-md-6 col-lg-4">
-            <label for="inp-pret" class="form-label">Preț minim: <span id="infoRange">(0)</span></label>
-            <input type="range" id="inp-pret" class="form-range" value="0" min="0"  max="37">
-        </div>
+            <button id="filtrare" class="btn btn-primary btn-sm"><i class="bi bi-filter"></i> Filtrează</button>
+            <button id="resetare" class="btn btn-secondary btn-sm"><i class="bi bi-arrow-counterclockwise"></i> Resetează</button><br/>
+            <button id="sortCrescNume" class="btn btn-outline-secondary btn-sm mt-2"><i class="bi bi-sort-alpha-down"></i> Sortează crescător</button>
+            <button id="sortDescrescNume" class="btn btn-outline-secondary btn-sm mt-2"><i class="bi bi-sort-alpha-up"></i> Sortează descrescător</button>
+            <button id="calculeazaPret" class="btn btn-success btn-sm mt-2"><i class="bi bi-calculator"></i> Calculează Preț</button> </div>
     </div>
-
-    <div class="row mb-3">
-        <div class="col-12 col-md-6 col-lg-4">
-            <label for="inp-categorie" class="form-label">Selectează categoria:</label>
-            <select id="inp-categorie" class="form-select">
-                <option id="sel-toate" selected value="toate">toate</option>
-                <% for (let opt of locals.optiuniCategorie) { %>
-                    <option value="<%- opt.unnest %>"><%- opt.unnest %> </option>
-                <% } %>
-            </select>
-        </div>
-    </div>
-
-    <div class="row mb-3">
-        <div class="col-12 col-md-6 col-lg-4">
-            <button id="filtrare" class="btn btn-primary"><i class="bi bi-filter"></i> Filtrează</button>
-            <button id="resetare" class="btn btn-secondary"><i class="bi bi-arrow-counterclockwise"></i> Resetează</button><br/>
-            <button id="sortCrescNume" class="btn btn-outline-secondary mt-2"><i class="bi bi-sort-alpha-down"></i> Sortează crescător</button>
-            <button id="sortDescrescNume" class="btn btn-outline-secondary mt-2"><i class="bi bi-sort-alpha-up"></i> Sortează descrescător</button>
-        </div>
-    </div>
-
-    <div class="row mb-3">
-        <div class="col-12">
-            <p id="p-suma" class="alert alert-info">Apăsați Alt+"c" pentru suma prețurilor produselor afișate. </p>
-        </div>
     </div>
 
     <section id="produse" class="mt-5">
@@ -103,6 +149,16 @@
                     <% } %>
                 </div>
                 <p class="categorie">Categorie:<span class="val-categorie"><%- prod.categorie%></span></p>
+                <% if (prod.data_adaugare) { %>
+                    <%
+                        const dateObj = new Date(prod.data_adaugare);
+                        const day = String(dateObj.getDate()).padStart(2, '0');
+                        const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+                        const year = dateObj.getFullYear();
+                        const formattedDate = `${year}-${month}-${day}`;
+                    %>
+                    <p class="data-adaugare">Data Adăugare: <span class="val-data-adaugare"><%- formattedDate %></span></p>
+                <% } %>
                 <figure>
                     <a href="/produs/<%-prod.id %>" >
                         <img src="/resurse/imagini/produse/<%- prod.imagine %>"  class="img-fluid rounded" alt="[imagine <%- prod.nume %>]" />
