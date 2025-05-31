@@ -16,7 +16,11 @@ function parseDate(dateString) {
 }
 
 window.onload = function() {
+    const inpPretRange = document.getElementById("inp-pret");
+    const minPretActual = parseFloat(inpPretRange.min);
+    const maxPretActual = parseFloat(inpPretRange.max);
 
+    document.getElementById("infoRange").innerText = `(${inpPretRange.value})`;
 
     const filtrareBtn = document.getElementById("filtrare");
     filtrareBtn.onclick = function() {
@@ -37,7 +41,7 @@ window.onload = function() {
                 break;
             }
         }
-        let inpPret = document.getElementById("inp-pret").value;
+        let inpPret = parseFloat(document.getElementById("inp-pret").value);
         let inpCategorie = document.getElementById("inp-categorie").value.trim().toLowerCase();
         const descriereFilter = document.getElementById("txt-descriere-min").value.trim().toLowerCase();
         const originiMultiple = Array.from(document.getElementById("inp-origini-multiple").selectedOptions).map(option => option.value);
@@ -64,7 +68,6 @@ window.onload = function() {
             let cond5 = descriere.includes(descriereFilter);
             let cond6 = originiMultiple.includes("oricare") || originiMultiple.includes(origine);
             let cond7 = (!noutati || (data_produs && new Date(data_produs.toString()) > new Date("2025-05-16")));
-            // console.log(new Date(data_produs.toString()), new Date("2025-05-16"))
             if (!cond1 || !cond2 || !cond3 || !cond4 || !cond5 || !cond6 || !cond7) {
                 item.style.display = "none";
             }
@@ -77,13 +80,16 @@ window.onload = function() {
     document.getElementById("resetare").onclick = function() {
         if (confirm("Sigur dorești să resetezi filtrele?")) {
             document.getElementById("inp-nume").value = "";
-            document.getElementById("inp-pret").value = 0;
-            document.getElementById("infoRange").innerText = "(0)";
+            document.getElementById("inp-pret").value = minPretActual;
+            document.getElementById("infoRange").innerText = `(${minPretActual})`;
             document.getElementById("inp-categorie").value = "toate";
             document.getElementById("txt-descriere-min").value = "";
-            document.getElementById("inp-origini-multiple").value = "oricare";
+            const selectOrigini = document.getElementById("inp-origini-multiple");
+            for (let i = 0; i < selectOrigini.options.length; i++) {
+                selectOrigini.options[i].selected = false;
+            }
+            selectOrigini.value = "oricare";
             document.getElementById("chk-noutati").checked = false;
-
 
             let produse = document.getElementsByClassName("produs");
             Array.from(produse).forEach(item => {

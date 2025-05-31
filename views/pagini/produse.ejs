@@ -6,9 +6,11 @@
     <link rel="stylesheet" href="/resurse/css/produse.css" type="text/css" />
     <title>SleepLess Brews - Produse</title>
     <%- include("../fragmente/head") %>
+    <link rel="stylesheet" href="/resurse/css/comparare.css" type="text/css" />
     <script type="text/javascript" src=/resurse/js/produse.js></script>
     <script type="text/javascript" src=/resurse/js/produse-cos.js></script>
-
+    <script type="text/javascript" src=/resurse/module_proprii/timer_oferte.js></script>
+    <script type="text/javascript" src=/resurse/module_proprii/comparare.js></script>
 </head>
 <body>
 <header class="c1" id="titlu" >
@@ -16,16 +18,25 @@
 </header>
 
 <main class="container-fluid">
+    <% if (locals.currentOffer) { %>
+        <div id="offer-banner" class="offer-banner">
+            Ofertă specială! Reducere de <span id="offer-discount"><%- locals.currentOffer.reducere %>%</span> la categoria
+            <span id="offer-category"><%- locals.currentOffer.categorie.charAt(0).toUpperCase() + locals.currentOffer.categorie.slice(1) %></span>!
+            Mai sunt: <span id="offer-timer" data-finalizare="<%- locals.currentOffer.data_finalizare %>"></span>
+        </div>
+    <% } %>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 mb-3">
                 <label for="inp-nume" class="form-label">Nume:</label>
                 <input type="text" id="inp-nume" class="form-control" list="sugestii-nume">
                 <datalist id="sugestii-nume">
-                    <option value="Espresso Blend"></option>
-                    <option value="Colombia Supremo"></option>
-                    <option value="Ethiopia Yirgacheffe"></option>
-                    <option value="Decaf Delight"></option>
+                    <% if (locals.numeProduse && locals.numeProduse.length > 0) { %>
+                        <% for (let nume of locals.numeProduse) { %>
+                            <option value="<%- nume %>"></option>
+                        <% } %>
+                    <% } %>
                 </datalist>
             </div>
         </div>
@@ -56,9 +67,9 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <label for="inp-pret" class="form-label">Preț:</label>
                 <div class="d-flex justify-content-between align-items-center">
-                    <span id="min-pret">0</span>
-                    <input type="range" id="inp-pret" class="form-range mx-2" value="0" min="0" max="37">
-                    <span id="max-pret">37</span> <span id="infoRange" class="ms-2">(0)</span>
+                    <span id="min-pret"><%- locals.minPret %></span>
+                    <input type="range" id="inp-pret" class="form-range mx-2" value="<%- locals.minPret %>" min="<%- locals.minPret %>" max="<%- locals.maxPret %>">
+                    <span id="max-pret"><%- locals.maxPret %></span> <span id="infoRange" class="ms-2">(<%- locals.minPret %>)</span>
                 </div>
             </div>
         </div>
@@ -103,15 +114,16 @@
                 <label for="inp-origini-multiple" class="form-label">Selectează Origini (Multiple):</label>
                 <select id="inp-origini-multiple" class="form-select" multiple size="4">
                     <option value="oricare">Oricare</option>
-                    <option value="Brazilia">Brazilia</option>
-                    <option value="Columbia">Columbia</option>
-                    <option value="Etiopia">Etiopia</option>
-                    <option value="Vietnam">Vietnam</option>
-                    <option value="Indonezia">Indonezia</option>
-                    <option value="Peru">Peru</option>
+                    <% if (locals.optiuniOrigini && locals.optiuniOrigini.length > 0) { %>
+                        <% for (let origine of locals.optiuniOrigini) { %>
+                            <option value="<%- origine %>"><%- origine %></option>
+                        <% } %>
+                    <% } %>
                 </select>
             </div>
         </div>
+
+    </div>
     </div>
 
 
@@ -137,7 +149,14 @@
                     </a>
                 </h3>
                 <div class="info-prod">
-                    <p class="pret">Preț: <span class="val-pret"><%- prod.pret%></span></p>
+                    <p class="pret">Preț:
+                        <% if (locals.currentOffer && prod.categorie === locals.currentOffer.categorie) { %>
+                            <span class="old-price"><%- prod.pret%></span>
+                            <span class="new-price"><%- (parseFloat(prod.pret) * (1 - locals.currentOffer.reducere / 100)).toFixed(2) %></span>
+                        <% } else { %>
+                            <span class="val-pret"><%- prod.pret%></span>
+                        <% } %>
+                    </p>
                     <% if (prod.greutate) { %>
                         <p class="greutate">Greutate: <span class="val-greutate"><%- prod.greutate%></span>g</p>
                     <% } %>
@@ -168,6 +187,10 @@
                     Selectează:<br/>
                     <input type="checkbox" class="select-cos" value="<%-prod.id %>" autocomplete="off">
                 </label>
+                <button class="btn btn-info btn-sm mt-2 compare-btn" data-id="<%- prod.id %>" data-nume="<%- prod.nume %>" data-pret="<%- prod.pret %>" data-greutate="<%- prod.greutate || 'N/A' %>" data-intensitate="<%- prod.intensitate || 'N/A' %>" data-origine="<%- prod.origine || 'N/A' %>" data-categorie="<%- prod.categorie %>">Compară</button>
+                <% if (locals.cheapestProductsPerCategory && locals.cheapestProductsPerCategory[prod.categorie] && locals.cheapestProductsPerCategory[prod.categorie].id === prod.id) { %>
+                    <div class="cheapest-badge">Cel mai ieftin din categorie!</div>
+                <% } %>
             </article>
             <% }%>
         </div>

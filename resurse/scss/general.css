@@ -454,4 +454,60 @@ caption {
   padding-top: 10px;
 }
 
+.offer-banner {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 1.2em;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#offer-timer {
+  font-size: 1.1em;
+  color: #007bff;
+}
+
+.ending-soon {
+  color: #dc3545 !important;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 5px;
+}
+
+.new-price {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.cheapest-badge {
+  background-color: #28a745;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: bounce 0.5s infinite alternate;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-5px);
+  }
+}
+
 /*# sourceMappingURL=general.css.map */

@@ -1,42 +1,116 @@
 <!DOCTYPE html>
-<html  lang="ro">
+<html lang="ro">
 <head>
-    <meta name="description" content="SleepLess Brews oferă o varietate de cafele, accesorii și aparate pentru o experiență perfectă acasă. Descoperă arome unice!">
-    <meta name="keywords" content="cafea, specialitate, boabe, măcinată, espresso, filtru, origine, arome, SleepLess Brews">
-
-    <title>SleepLess Brews - Produs</title>
+    <meta name="description" content="Detalii despre produsul <%- prod.nume %> - SleepLess Brews.">
+    <meta name="keywords" content="<%- prod.nume %>, cafea, SleepLess Brews, <%- prod.categorie %>">
+    <title><%- prod.nume %> - SleepLess Brews</title>
     <%- include("../fragmente/head") %>
-    <link href="/resurse/css/produs.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="/resurse/css/comparare.css" type="text/css" />
+    <script type="text/javascript" src=/resurse/js/produse-cos.js></script>
+    <script type="text/javascript" src=/resurse/module_proprii/timer_oferte.js></script>
+    <script type="text/javascript" src=/resurse/module_proprii/comparare.js></script>
+    <style>
+        .old-price {
+            text-decoration: line-through;
+            color: #888;
+            margin-right: 5px;
+        }
+        .new-price {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .offer-banner {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .offer-timer {
+            font-size: 1.5em;
+            color: #007bff;
+        }
+        .offer-timer.ending-soon {
+            color: #dc3545;
+            animation: pulse 1s infinite alternate;
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+    </style>
 </head>
 <body>
-<%- include("../fragmente/header") %>
+<header class="c1" id="titlu">
+    <%- include("../fragmente/header") %>
+</header>
 
-<main>
-    <section>
-        <h2>Detalii Produs</h2>
-        <article id="art-produs">
-            <h3><span class="nume"><%- locals.prod.nume %></span></h3>
-            <p>Preț: <span class="pret"><%- locals.prod.pret %> </span></p>
-            <p>Descriere: <span class="descriere"><%- locals.prod.descriere %> </span></p>
-            <% if (locals.prod.origine) { %>
-                <p>Origine: <span class="origine"><%- locals.prod.origine %> </span></p>
-            <% } %>
-            <% if (locals.prod.intensitate) { %>
-                <p>Intensitate: <span class="intensitate"><%- locals.prod.intensitate %> </span></p>
-            <% } %>
-            <% if (locals.prod.note_gust) { %>
-                <p>Note gust: <span class="note_gust"><%- locals.prod.note_gust %> </span></p>
-            <% } %>
-            <% if (locals.prod.procesare) { %>
-                <p>Procesare: <span class="procesare"><%- locals.prod.procesare %> </span></p>
-            <% } %>
-            <p>Categorie: <span class="categorie"><%- locals.prod.categorie %> </span></p>
-            <p>Data adăugare: <span class="data_adaugare"><%- locals.prod.data_adaugare %> </span></p>
-            <figure class="imag-produs">
-                <img  src="/resurse/imagini/produse/<%- locals.prod.imagine %>" alt="[imagine <%- locals.prod.nume %>]" />
-            </figure>
-        </article>
+<main class="container-fluid">
+    <% if (locals.currentOffer) { %>
+        <div id="offer-banner" class="offer-banner">
+            Ofertă specială! Reducere de <span id="offer-discount"><%- locals.currentOffer.reducere %>%</span> la categoria
+            <span id="offer-category"><%- locals.currentOffer.categorie.charAt(0).toUpperCase() + locals.currentOffer.categorie.slice(1) %></span>!
+            Mai sunt: <span id="offer-timer" data-finalizare="<%- locals.currentOffer.data_finalizare %>"></span>
+        </div>
+    <% } %>
 
+    <section id="detalii-produs" class="my-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="/resurse/imagini/produse/<%- prod.imagine %>" class="img-fluid rounded shadow-sm" alt="[imagine <%- prod.nume %>]">
+            </div>
+            <div class="col-md-6">
+                <h1 class="mb-3"><%- prod.nume %></h1>
+                <p class="lead"><%- prod.descriere %></p>
+                <p class="pret">Preț:
+                    <% if (locals.currentOffer && prod.categorie === locals.currentOffer.categorie) { %>
+                        <span class="old-price"><%- prod.pret%></span>
+                        <span class="new-price"><%- (parseFloat(prod.pret) * (1 - locals.currentOffer.reducere / 100)).toFixed(2) %></span>
+                    <% } else { %>
+                        <span class="val-pret"><%- prod.pret%></span>
+                    <% } %>
+                </p>
+                <% if (prod.greutate) { %>
+                    <p class="greutate">Greutate: <span class="val-greutate"><%- prod.greutate%></span>g</p>
+                <% } %>
+                <% if (prod.intensitate) { %>
+                    <p class="intensitate">Intensitate: <span class="val-intensitate"><%- prod.intensitate%></span>/5</p>
+                <% } %>
+                <% if (prod.origine) { %>
+                    <p class="origine">Origine: <span class="val-origine"><%- prod.origine%></span></p>
+                <% } %>
+                <% if (prod.note_gust) { %>
+                    <p>Note gust: <span class="note_gust"><%- prod.note_gust.join(', ') %> </span></p>
+                <% } %>
+                <% if (prod.procesare) { %>
+                    <p>Procesare: <span class="procesare"><%- prod.procesare %> </span></p>
+                <% } %>
+                <p class="categorie">Categorie:<span class="val-categorie"><%- prod.categorie%></span></p>
+                <% if (prod.data_adaugare) { %>
+                    <%
+                        const dateObj = new Date(prod.data_adaugare);
+                        const day = String(dateObj.getDate()).padStart(2, '0');
+                        const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+                        const year = dateObj.getFullYear();
+                        const formattedDate = `${year}-${month}-${day}`;
+                    %>
+                    <p class="data-adaugare">Data Adăugare: <span class="val-data-adaugare"><%- formattedDate %></span></p>
+                <% } %>
+                <button class="btn btn-success mt-3 add-to-cart-btn" data-id="<%- prod.id %>">Adaugă în coș</button>
+                <button class="btn btn-info mt-3 compare-btn"
+                        data-id="<%- prod.id %>"
+                        data-nume="<%- prod.nume %>"
+                        data-pret="<%- prod.pret %>"
+                        data-greutate="<%- prod.greutate || 'N/A' %>"
+                        data-intensitate="<%- prod.intensitate || 'N/A' %>"
+                        data-origine="<%- prod.origine || 'N/A' %>"
+                        data-categorie="<%- prod.categorie %>">Compară</button>
+            </div>
+        </div>
     </section>
 </main>
 
